@@ -1,7 +1,9 @@
 const ticketSelect = document.getElementById('tickets');
 const payButton = document.getElementById('payButton');
 
-// Update button text when ticket quantity changes
+// Your live Stripe test link
+const STRIPE_LINK = "https://buy.stripe.com/test_6oU8wP7Hr5ese13cwVbII00";
+
 if (ticketSelect && payButton) {
     ticketSelect.addEventListener('change', (e) => {
         const quantity = e.target.value;
@@ -9,14 +11,11 @@ if (ticketSelect && payButton) {
         payButton.textContent = `Pay Now ($${total})`;
     });
 
-    // Simulate payment click and redirect to the questions page
     payButton.addEventListener('click', () => {
-        payButton.textContent = "Processing Payment...";
+        payButton.textContent = "Redirecting to secure checkout...";
         payButton.disabled = true;
 
-        setTimeout(() => {
-            // Redirects to your questionnaire file
-            window.location.href = 'questions.html';
-        }, 1500); 
+        // Redirect the user to your Stripe checkout page
+        window.location.href = STRIPE_LINK;
     });
 }
