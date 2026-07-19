@@ -1,7 +1,7 @@
 const ticketSelect = document.getElementById('tickets');
 const payButton = document.getElementById('payButton');
 
-// Your live Stripe test link
+// Your live Stripe Link
 const STRIPE_LINK = "https://buy.stripe.com/test_6oU8wP7Hr5ese13cwVbII00";
 
 if (ticketSelect && payButton) {
@@ -15,7 +15,7 @@ if (ticketSelect && payButton) {
         payButton.textContent = "Redirecting to secure checkout...";
         payButton.disabled = true;
 
-        // Redirect the user to your Stripe checkout page
+        // Redirect user straight to your Stripe payment page
         window.location.href = STRIPE_LINK;
     });
 }
