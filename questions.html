@@ -14,12 +14,12 @@
         <form id="questionsForm" class="booking-card">
             <div class="form-group">
                 <label for="diet">Any dietary restrictions or allergies?</label>
-                <input type="text" id="diet" placeholder="e.g., None, Vegetarian, Peanut allergy">
+                <input type="text" id="diet" placeholder="e.g., None, Vegetarian, Peanut allergy" required>
             </div>
 
             <div class="form-group">
                 <label for="song">What song gets you on the dance floor?</label>
-                <input type="text" id="song" placeholder="Your favorite anthem">
+                <input type="text" id="song" placeholder="Your favorite anthem" required>
             </div>
 
             <button type="submit" class="btn">Submit & Confirm</button>
@@ -27,7 +27,6 @@
     </div>
 
     <script>
-        // Simple confirmation text when they submit the questions
         document.getElementById('questionsForm').addEventListener('submit', (e) => {
             e.preventDefault();
             alert('All set! Your preferences are saved. See you there!');
