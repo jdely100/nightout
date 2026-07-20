@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Preferences | NightOut Annapolis</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #0d0b18;
+            color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .card {
+            background: #16122b;
+            border: 1px solid #2e2755;
+            border-radius: 16px;
+            max-width: 480px;
+            width: 100%;
+            padding: 32px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+        h2 { font-size: 22px; margin-bottom: 6px; color: #ffffff; text-align: center; }
+        .selected-date-display { text-align: center; color: #ff2a74; font-size: 14px; font-weight: 600; margin-bottom: 24px; }
+        .form-group { margin-bottom: 18px; text-align: left; }
+        label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px; color: #d1d5db; }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            background: #0d0b18;
+            border: 1px solid #2e2755;
+            color: white;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+        }
+        input:focus, select:focus { border-color: #ff2a74; }
+        .btn {
+            width: 100%;
+            background: #ff2a74;
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+        .btn:hover { background: #e01f61; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Tailor Your Surprise</h2>
+        <div id="dateDisplay" class="selected-date-display">Date: Selected Weekend</div>
+
+        <form id="preferencesForm">
+            <div class="form-group">
+                <label for="names">Both of Your Names:</label>
+                <input type="text" id="names" placeholder="e.g., John & Sarah" required>
+            </div>
+
+            <div class="form-group">
+                <label for="diet">Dietary Restrictions or Allergies:</label>
+                <input type="text" id="diet" placeholder="e.g., None, Vegetarian, Gluten-Free" required>
+            </div>
+
+            <div class="form-group">
+                <label for="vibe">Preferred Dinner Vibe:</label>
+                <select id="vibe" required>
+                    <option value="Cozy & Intimate">Cozy & Intimate (Wine Bar / Bistro)</option>
+                    <option value="Lively & Fun">Lively & Fun (Pub / Waterfront)</option>
+                    <option value="Casual & Relaxed">Casual & Relaxed (Pizza / Tacos / Craft Beer)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="drink">Drink Preference:</label>
+                <select id="drink" required>
+                    <option value="Cocktails / Wine">Cocktails & Wine</option>
+                    <option value="Craft Beer">Craft Beer</option>
+                    <option value="Non-Alcoholic">Non-Alcoholic / Mocktails</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">Proceed to Checkout ($49.99) →</button>
+        </form>
+    </div>
+
+    <script>
+        // Replace this with your exact Stripe Payment Link for $49.99
+        const STRIPE_LINK = "https://buy.stripe.com/test_6oU8wP7Hr5ese13cwVbII00";
+
+        // Display chosen date from main page
+        const savedDate = localStorage.getItem('selectedDate') || "Upcoming Weekend";
+        document.getElementById('dateDisplay').textContent = "Selected Date: " + savedDate;
+
+        document.getElementById('preferencesForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Collect response data
+            const formData = {
+                date: savedDate,
+                names: document.getElementById('names').value,
+                diet: document.getElementById('diet').value,
+                vibe: document.getElementById('vibe').value,
+                drink: document.getElementById('drink').value
+            };
+
+            // Save preferences locally
+            localStorage.setItem('userPreferences', JSON.stringify(formData));
+
+            // Redirect directly to your Stripe Checkout link
+            window.location.href = STRIPE_LINK;
+        });
+    </script>
+</body>
+</html>
