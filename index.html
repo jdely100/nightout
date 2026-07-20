@@ -3,95 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NightOut PWA</title>
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#0f0c1b">
-    <link rel="icon" type="image/png" href="app_icon.png">
+    <title>NightOut Annapolis | Curated Mystery Dates</title>
     <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #0f0c1b;
+            background-color: #0d0b18;
             color: #f3f4f6;
-            margin: 0;
-            padding: 40px 20px;
             display: flex;
             justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
-        .container { max-width: 500px; width: 100%; text-align: center; }
-        h1 { color: #ff2a74; margin-bottom: 10px; }
-        .subtitle { color: #9ca3af; margin-bottom: 30px; }
-        .event-details { background: #1f1a3a; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: left; }
-        .booking-card { background: #15102a; border: 1px solid #2e2755; padding: 30px; border-radius: 12px; text-align: left; }
-        label { display: block; margin-bottom: 8px; font-weight: 600; }
-        select, input { width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 6px; border: 1px solid #2e2755; background: #0f0c1b; color: white; box-sizing: border-box; }
-        .btn { width: 100%; background: #ff2a74; color: white; border: none; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; }
-        .hidden { display: none; }
+        .card {
+            background: #16122b;
+            border: 1px solid #2e2755;
+            border-radius: 16px;
+            max-width: 480px;
+            width: 100%;
+            padding: 32px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+        .badge {
+            background: rgba(255, 42, 116, 0.15);
+            color: #ff2a74;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+        h1 { font-size: 28px; margin-bottom: 8px; color: #ffffff; }
+        .subtitle { color: #9ca3af; font-size: 15px; margin-bottom: 24px; }
+        .details-box {
+            background: #0d0b18;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: left;
+            margin-bottom: 24px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .details-box li { margin-left: 20px; color: #d1d5db; }
+        .price-tag {
+            font-size: 32px;
+            font-weight: 800;
+            color: #ff2a74;
+            margin-bottom: 20px;
+        }
+        .price-tag span { font-size: 14px; color: #9ca3af; font-weight: normal; }
+        label { display: block; text-align: left; font-size: 13px; font-weight: 600; margin-bottom: 8px; color: #d1d5db; }
+        select {
+            width: 100%;
+            padding: 12px;
+            background: #0d0b18;
+            border: 1px solid #2e2755;
+            color: white;
+            border-radius: 8px;
+            font-size: 15px;
+            margin-bottom: 24px;
+            outline: none;
+        }
+        select:focus { border-color: #ff2a74; }
+        .btn {
+            width: 100%;
+            background: #ff2a74;
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn:hover { background: #e01f61; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- View 1: Booking Landing View -->
-        <div id="bookingView">
-            <h1>Friday Night Out 🎉</h1>
-            <p class="subtitle">Join us for the ultimate city nightlife experience.</p>
-            <div class="event-details">
-                <p><strong>Price:</strong> $25 per ticket</p>
-            </div>
-            <div class="booking-card">
-                <h2>Book Your Tickets</h2>
-                <label for="tickets">Number of Tickets:</label>
-                <select id="tickets">
-                    <option value="1">1 Ticket</option>
-                    <option value="2">2 Tickets</option>
-                </select>
-                <button id="payButton" class="btn">Pay Now ($25)</button>
-            </div>
+
+    <div class="card">
+        <span class="badge">Downtown Annapolis</span>
+        <h1>NightOut Annapolis</h1>
+        <p class="subtitle">A fully curated, surprise night out for two.</p>
+
+        <div class="price-tag">$49.99 <span>/ couple</span></div>
+
+        <div class="details-box">
+            <p style="margin-bottom: 8px;"><strong>What's included in your curation:</strong></p>
+            <ul>
+                <li>Hand-picked activity & reserved dinner spot</li>
+                <li>Exclusive local perks & surprise dessert voucher</li>
+                <li>Custom digital envelope sent before your date</li>
+            </ul>
         </div>
 
-        <!-- View 2: Post-Payment Questionnaire View -->
-        <div id="questionsView" class="hidden">
-            <h1>Payment Successful! 🎟️</h1>
-            <p class="subtitle">Please complete your booking preferences.</p>
-            <form id="questionsForm" class="booking-card">
-                <label for="diet">Dietary restrictions?</label>
-                <input type="text" id="diet" placeholder="None, Vegetarian, etc." required>
-                <label for="song">Dancefloor anthem?</label>
-                <input type="text" id="song" placeholder="Your favorite song" required>
-                <button type="submit" class="btn">Submit & Confirm</button>
-            </form>
-        </div>
+        <form id="dateForm">
+            <label for="dateSelect">Choose Your Weekend Date:</label>
+            <select id="dateSelect" required>
+                <option value="" disabled selected>Select an upcoming date...</option>
+            </select>
+
+            <button type="submit" class="btn">Continue to Preferences →</button>
+        </form>
     </div>
 
     <script>
-        // Service Worker Registration
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js');
+        // Automatically populate the select dropdown with the next 4 Fridays and Saturdays
+        const select = document.getElementById('dateSelect');
+        const today = new Date();
+        let optionsCount = 0;
+        
+        for (let i = 0; i < 30 && optionsCount < 8; i++) {
+            let nextDate = new Date();
+            nextDate.setDate(today.getDate() + i);
+            let dayOfWeek = nextDate.getDay();
+            
+            // 5 = Friday, 6 = Saturday
+            if (dayOfWeek === 5 || dayOfWeek === 6) {
+                let options = { weekday: 'long', month: 'short', day: 'numeric' };
+                let dateString = nextDate.toLocaleDateString('en-US', options);
+                let opt = document.createElement('option');
+                opt.value = dateString;
+                opt.innerHTML = dateString;
+                select.appendChild(opt);
+                optionsCount++;
+            }
         }
 
-        const STRIPE_LINK = "https://buy.stripe.com/test_6oU8wP7Hr5ese13cwVbII00";
-        const tickets = document.getElementById('tickets');
-        const payButton = document.getElementById('payButton');
-
-        // Check if user is returning from Stripe success redirect
-        const urlParams = new URLSearchParams(window.location.search);
-        if (window.location.hash === '#success' || urlParams.get('session_id')) {
-            document.getElementById('bookingView').classList.add('hidden');
-            document.getElementById('questionsView').classList.remove('hidden');
-        }
-
-        tickets.addEventListener('change', (e) => {
-            payButton.textContent = `Pay Now ($${e.target.value * 25})`;
-        });
-
-        payButton.addEventListener('click', () => {
-            payButton.textContent = "Redirecting...";
-            window.location.href = STRIPE_LINK;
-        });
-
-        document.getElementById('questionsForm').addEventListener('submit', (e) => {
+        // Save selected date to localStorage and move to questions page
+        document.getElementById('dateForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Booking Confirmed! See you there.');
-            window.location.href = window.location.pathname;
+            const selectedDate = select.value;
+            localStorage.setItem('selectedDate', selectedDate);
+            window.location.href = 'questions.html';
         });
     </script>
 </body>
