@@ -3,34 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NightOut Signup</title>
-    <link rel="stylesheet" href="style.css">
+    <title>NightOut PWA</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0f0c1b">
+    <link rel="icon" type="image/png" href="app_icon.png">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #0f0c1b;
+            color: #f3f4f6;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container { max-width: 500px; width: 100%; text-align: center; }
+        h1 { color: #ff2a74; margin-bottom: 10px; }
+        .subtitle { color: #9ca3af; margin-bottom: 30px; }
+        .event-details { background: #1f1a3a; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: left; }
+        .booking-card { background: #15102a; border: 1px solid #2e2755; padding: 30px; border-radius: 12px; text-align: left; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; }
+        select, input { width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 6px; border: 1px solid #2e2755; background: #0f0c1b; color: white; box-sizing: border-box; }
+        .btn { width: 100%; background: #ff2a74; color: white; border: none; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; }
+        .hidden { display: none; }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Friday Night Out 🎉</h1>
-        <p class="subtitle">Join us for the ultimate city nightlife experience.</p>
-        
-        <div class="event-details">
-            <p><strong>Date:</strong> Next Friday</p>
-            <p><strong>Time:</strong> 8:00 PM - Late</p>
-            <p><strong>Price:</strong> $25 per ticket</p>
+        <!-- View 1: Booking Landing View -->
+        <div id="bookingView">
+            <h1>Friday Night Out 🎉</h1>
+            <p class="subtitle">Join us for the ultimate city nightlife experience.</p>
+            <div class="event-details">
+                <p><strong>Price:</strong> $25 per ticket</p>
+            </div>
+            <div class="booking-card">
+                <h2>Book Your Tickets</h2>
+                <label for="tickets">Number of Tickets:</label>
+                <select id="tickets">
+                    <option value="1">1 Ticket</option>
+                    <option value="2">2 Tickets</option>
+                </select>
+                <button id="payButton" class="btn">Pay Now ($25)</button>
+            </div>
         </div>
 
-        <div class="booking-card">
-            <h2>Book Your Tickets</h2>
-            <label for="tickets">Number of Tickets:</label>
-            <select id="tickets">
-                <option value="1">1 Ticket</option>
-                <option value="2">2 Tickets</option>
-                <option value="3">3 Tickets</option>
-                <option value="4">4 Tickets</option>
-            </select>
-            
-            <button id="payButton" class="btn">Pay Now ($25)</button>
+        <!-- View 2: Post-Payment Questionnaire View -->
+        <div id="questionsView" class="hidden">
+            <h1>Payment Successful! 🎟️</h1>
+            <p class="subtitle">Please complete your booking preferences.</p>
+            <form id="questionsForm" class="booking-card">
+                <label for="diet">Dietary restrictions?</label>
+                <input type="text" id="diet" placeholder="None, Vegetarian, etc." required>
+                <label for="song">Dancefloor anthem?</label>
+                <input type="text" id="song" placeholder="Your favorite song" required>
+                <button type="submit" class="btn">Submit & Confirm</button>
+            </form>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+
+        const STRIPE_LINK = "https://buy.stripe.com/test_6oU8wP7Hr5ese13cwVbII00";
+        const tickets = document.getElementById('tickets');
+        const payButton = document.getElementById('payButton');
+
+        // Check if user is returning from Stripe success redirect
+        const urlParams = new URLSearchParams(window.location.search);
+        if (window.location.hash === '#success' || urlParams.get('session_id')) {
+            document.getElementById('bookingView').classList.add('hidden');
+            document.getElementById('questionsView').classList.remove('hidden');
+        }
+
+        tickets.addEventListener('change', (e) => {
+            payButton.textContent = `Pay Now ($${e.target.value * 25})`;
+        });
+
+        payButton.addEventListener('click', () => {
+            payButton.textContent = "Redirecting...";
+            window.location.href = STRIPE_LINK;
+        });
+
+        document.getElementById('questionsForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Booking Confirmed! See you there.');
+            window.location.href = window.location.pathname;
+        });
+    </script>
 </body>
 </html>
