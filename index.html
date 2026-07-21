@@ -6,23 +6,19 @@
     <title>NightOut Annapolis — Fully Curated Surprises for Couples</title>
     <style>
         :root {
-            --bg-color: #f8f9fc;
+            --bg-color: #f8fafc;
             --card-bg: #ffffff;
-            --accent-pink: #ff3b70;
-            --accent-purple: #7c3aed;
+            --primary: #0f172a;
+            --accent: #ff5252;
             --text-main: #0f172a;
             --text-muted: #64748b;
             --border-color: #e2e8f0;
-            --success-color: #10b981;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
 
         body {
             background-color: var(--bg-color);
-            background-image: 
-                radial-gradient(circle at 10% 10%, rgba(255, 59, 112, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 90% 90%, rgba(124, 58, 237, 0.05) 0%, transparent 50%);
             color: var(--text-main);
             line-height: 1.6;
             display: flex;
@@ -30,59 +26,62 @@
             min-height: 100vh;
         }
 
-        header { text-align: center; padding: 30px 20px 10px 20px; }
-        .logo { font-size: 30px; font-weight: 900; color: var(--text-main); text-decoration: none; }
-        .logo span { background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .tagline { font-size: 13px; color: var(--accent-purple); font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 4px; }
+        header { text-align: center; padding: 32px 20px 12px 20px; }
+        .logo { font-size: 28px; font-weight: 900; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--accent); }
+        .tagline { font-size: 12px; color: var(--text-muted); font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 4px; }
 
-        main { flex: 1; max-width: 580px; width: 100%; margin: 0 auto; padding: 20px 20px 60px 20px; }
+        main { flex: 1; max-width: 540px; width: 100%; margin: 0 auto; padding: 20px 20px 60px 20px; }
 
         .view-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 24px;
+            border-radius: 16px;
             padding: 32px;
-            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
             text-align: center;
         }
 
-        h2 { font-size: 24px; font-weight: 800; margin-bottom: 12px; }
-        p { color: var(--text-muted); margin-bottom: 20px; font-size: 15px; }
+        h2 { font-size: 22px; font-weight: 800; margin-bottom: 10px; color: var(--primary); }
+        p { color: var(--text-muted); margin-bottom: 20px; font-size: 14px; }
 
         .price-badge {
             display: inline-block;
-            background: linear-gradient(135deg, #fff0f5, #f3e8ff);
-            color: var(--accent-purple);
-            border: 1px solid rgba(124, 58, 237, 0.2);
-            font-size: 18px; font-weight: 900; padding: 6px 20px; border-radius: 50px; margin: 8px 0 20px 0;
+            background-color: #f1f5f9;
+            color: var(--primary);
+            border: 1px solid var(--border-color);
+            font-size: 18px; font-weight: 800; padding: 6px 20px; border-radius: 50px; margin: 8px 0 20px 0;
         }
 
-        .highlight-box { background: #f0fdf4; border: 1px dashed var(--success-color); padding: 14px; border-radius: 16px; margin-bottom: 24px; }
-        .highlight-box p { margin-bottom: 0; color: #166534; font-weight: 700; }
+        .highlight-box { background: #fafafa; border: 1px dashed #cbd5e1; padding: 14px; border-radius: 12px; margin-bottom: 24px; }
+        .highlight-box p { margin-bottom: 0; color: var(--primary); font-weight: 600; font-size: 13px; }
 
         .steps { margin-bottom: 28px; text-align: left; }
         .step-item { display: flex; align-items: flex-start; margin-bottom: 16px; }
         .step-number {
-            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
-            color: white; font-weight: 900; width: 30px; height: 30px; border-radius: 10px;
-            display: flex; align-items: center; justify-content: center; margin-right: 14px; flex-shrink: 0; font-size: 14px;
+            background-color: var(--primary);
+            color: white; font-weight: 800; width: 28px; height: 28px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center; margin-right: 14px; flex-shrink: 0; font-size: 13px;
         }
         .step-text h4 { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
         .step-text p { font-size: 13px; margin-bottom: 0; color: var(--text-muted); }
 
-        .form-group { margin-bottom: 20px; text-align: left; }
-        label { display: block; margin-bottom: 6px; font-weight: 700; font-size: 12px; color: var(--accent-purple); text-transform: uppercase; }
+        .form-group { margin-bottom: 18px; text-align: left; }
+        label { display: block; margin-bottom: 6px; font-weight: 700; font-size: 12px; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px; }
         input[type="text"], input[type="tel"], input[type="email"], select {
-            width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border-color);
-            background-color: #f8fafc; color: var(--text-main); font-size: 15px; outline: none;
+            width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border-color);
+            background-color: #ffffff; color: var(--text-main); font-size: 14px; outline: none;
         }
+        input:focus, select:focus { border-color: var(--primary); }
 
         .btn {
-            display: block; width: 100%; background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
-            color: white; border: none; padding: 14px; font-size: 16px; font-weight: 800; border-radius: 14px;
-            cursor: pointer; text-align: center; text-decoration: none; box-shadow: 0 6px 18px rgba(124, 58, 237, 0.2);
+            display: block; width: 100%; background-color: var(--primary);
+            color: white; border: none; padding: 14px; font-size: 15px; font-weight: 700; border-radius: 10px;
+            cursor: pointer; text-align: center; text-decoration: none; transition: background 0.2s;
         }
-        .btn-secondary { background: #f1f5f9; color: var(--text-muted); border: 1px solid var(--border-color); margin-top: 12px; box-shadow: none; }
+        .btn:hover { background-color: #1e293b; }
+        .btn-secondary { background: #f1f5f9; color: var(--primary); border: 1px solid var(--border-color); margin-top: 12px; }
+        .btn-secondary:hover { background: #e2e8f0; }
 
         .hidden { display: none !important; }
         footer { text-align: center; padding: 20px; font-size: 12px; color: var(--text-muted); border-top: 1px solid var(--border-color); }
@@ -91,7 +90,7 @@
 <body>
 
     <header>
-        <a href="index.html" class="logo">NightOut<span>Annapolis</span> 🎟️</a>
+        <a href="index.html" class="logo">NightOut<span>Annapolis</span></a>
         <div class="tagline">Surprise Date Night Experiences</div>
     </header>
 
@@ -99,12 +98,12 @@
         <!-- WELCOME SCREEN -->
         <div id="welcomeView" class="view-card">
             <h2>Ditch the Planning. Keep the Romance.</h2>
-            <p>We craft completely secret, fully curated evenings out for couples in Downtown Annapolis.</p>
+            <p>We craft secret, fully curated evenings out for couples in Downtown Annapolis.</p>
             
             <div class="price-badge">$49.99 / Couple Package</div>
 
             <div class="highlight-box">
-                <p>✨ Everything is an absolute surprise until your date begins!</p>
+                <p>✨ Everything is a surprise until date night begins!</p>
             </div>
 
             <div class="steps">
@@ -119,14 +118,14 @@
                     <div class="step-number">2</div>
                     <div class="step-text">
                         <h4>Customize Your Vibe</h4>
-                        <p>Fill out your preferences to receive your simple 4-digit Access Pass via email.</p>
+                        <p>Fill out your preferences to receive your Access Pass via email.</p>
                     </div>
                 </div>
                 <div class="step-item">
                     <div class="step-number">3</div>
                     <div class="step-text">
                         <h4>Track & Unlock on Date Night</h4>
-                        <p>Use your code on our tracker page to unlock stops as your date unfolds!</p>
+                        <p>Use your passcode on our portal to reveal stops as your evening unfolds!</p>
                     </div>
                 </div>
             </div>
@@ -141,10 +140,10 @@
             <p>Includes pre-booked activity tickets, curated dining reservations with perks, and surprise dessert vouchers.</p>
             
             <div style="margin: 20px 0; display: flex; flex-direction: column; gap: 12px;">
-                <div style="border: 1px solid var(--border-color); border-radius: 16px; padding: 16px; display: flex; justify-content: space-between; align-items: center;">
+                <div style="border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; justify-content: space-between; align-items: center;">
                     <div style="text-align: left;">
                         <h4 style="font-size: 15px;">Saturday, August 8</h4>
-                        <p style="font-size: 13px; color: var(--accent-pink); font-weight: 700; margin: 0;">🔥 Only 2 Slots Left!</p>
+                        <p style="font-size: 12px; color: var(--accent); font-weight: 700; margin: 0;">🔥 Only 2 Slots Left!</p>
                     </div>
                     <button class="btn" style="width: auto; padding: 8px 16px; font-size: 13px;" onclick="triggerCheckout('Saturday, August 8')">Book ($49.99)</button>
                 </div>
@@ -155,8 +154,8 @@
 
         <!-- POST-PAYMENT PREFERENCES -->
         <div id="preferencesView" class="view-card hidden">
-            <h2 style="color: var(--accent-purple);">Payment Successful! 🎟️</h2>
-            <p>Fill out your preferences below to generate your 4-digit Access Pass:</p>
+            <h2>Payment Successful! 🎉</h2>
+            <p>Fill out your preferences below to generate your Access Pass:</p>
             
             <form id="preferencesForm">
                 <div class="form-group">
@@ -203,7 +202,7 @@
 
     <script>
         const STRIPE_LINK = "https://buy.stripe.com/test_6oU8wP7Hr5ese13cwVbII00";
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzK5qTseJuvbgz7uOT056mxcE2o-JESYaNkLnEhcASWbCfFkzxJ-SFBcqgxnPk8jW7-/exec";
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzK5qTseJuvbgz7uOT056mxcE2o-JESYaNkNkLnEhcASWbCfFkzxJ-SFBcqgxnPk8jW7-/exec";
 
         function switchView(id) {
             document.getElementById('welcomeView').classList.add('hidden');
