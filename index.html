@@ -17,21 +17,11 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+        body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
 
-        /* Header Navigation */
         header {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky; top: 0; z-index: 100;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100;
             padding: 16px 24px; display: flex; justify-content: space-between; align-items: center;
         }
         .logo { font-size: 22px; font-weight: 900; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
@@ -42,62 +32,52 @@
         }
         .nav-btn:hover { background: #e2e8f0; }
 
-        /* Hero Section */
+        /* Hero Banner with Background Image */
         .hero {
-            max-width: 800px; margin: 40px auto 20px auto; padding: 0 20px; text-align: center;
+            position: relative;
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), 
+                        url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            color: #ffffff; text-align: center; padding: 80px 20px 70px 20px; margin-bottom: 40px;
         }
         .hero-badge {
-            display: inline-block; background: #f1f5f9; color: var(--primary); font-size: 12px;
-            font-weight: 700; padding: 6px 16px; border-radius: 50px; border: 1px solid var(--border-color); margin-bottom: 16px;
+            display: inline-block; background: rgba(255, 255, 255, 0.15); color: #ffffff;
+            font-size: 12px; font-weight: 700; padding: 6px 16px; border-radius: 50px;
+            backdrop-filter: blur(4px); margin-bottom: 16px; border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        .hero h1 { font-size: 38px; font-weight: 900; line-height: 1.2; color: var(--primary); letter-spacing: -1px; margin-bottom: 16px; }
-        .hero p { font-size: 17px; color: var(--text-muted); max-width: 600px; margin: 0 auto 28px auto; }
+        .hero h1 { font-size: 42px; font-weight: 900; line-height: 1.15; letter-spacing: -1px; margin-bottom: 16px; }
+        .hero p { font-size: 17px; color: #cbd5e1; max-width: 600px; margin: 0 auto 28px auto; }
 
-        .cta-box { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
         .btn {
-            background-color: var(--primary); color: white; border: none; padding: 14px 28px;
-            font-size: 15px; font-weight: 700; border-radius: 10px; cursor: pointer; text-decoration: none; transition: 0.2s;
+            background-color: var(--accent); color: white; border: none; padding: 14px 28px;
+            font-size: 15px; font-weight: 700; border-radius: 10px; cursor: pointer; text-decoration: none; display: inline-block; transition: 0.2s;
         }
-        .btn:hover { background-color: #1e293b; }
-        .btn-secondary { background: #ffffff; color: var(--primary); border: 1px solid var(--border-color); }
+        .btn:hover { background-color: #e04343; }
+        .btn-secondary { background: #ffffff; color: var(--primary); }
 
-        /* Sections Structure */
-        section { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        section { max-width: 840px; margin: 40px auto; padding: 0 20px; }
         .section-title { font-size: 24px; font-weight: 800; text-align: center; margin-bottom: 8px; }
         .section-subtitle { font-size: 14px; color: var(--text-muted); text-align: center; margin-bottom: 32px; }
 
-        /* Features / Grid */
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-        .feature-card {
-            background: #ffffff; border: 1px solid var(--border-color); border-radius: 14px; padding: 24px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02); text-align: left;
+        /* Grid Cards with Images */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        .card-with-img {
+            background: #ffffff; border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03); text-align: left;
         }
-        .feature-icon { font-size: 28px; margin-bottom: 12px; }
-        .feature-card h3 { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
-        .feature-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 0; }
+        .card-img { width: 100%; height: 140px; object-fit: cover; }
+        .card-body { padding: 20px; }
+        .card-body h3 { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
+        .card-body p { font-size: 13px; color: var(--text-muted); margin: 0; }
 
-        /* Sample Itinerary Preview */
-        .sample-box {
-            background: #ffffff; border: 1px solid var(--border-color); border-radius: 16px; padding: 28px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-        }
-        .sample-step {
-            display: flex; gap: 16px; align-items: flex-start; padding: 12px 0; border-bottom: 1px dashed var(--border-color);
-        }
+        /* Sample Itinerary Container */
+        .sample-box { background: #ffffff; border: 1px solid var(--border-color); border-radius: 16px; padding: 28px; }
+        .sample-step { display: flex; gap: 16px; align-items: flex-start; padding: 14px 0; border-bottom: 1px dashed var(--border-color); }
         .sample-step:last-child { border-bottom: none; }
         .sample-time { font-weight: 800; font-size: 13px; color: var(--accent); width: 70px; flex-shrink: 0; }
         .sample-desc h4 { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
         .sample-desc p { font-size: 12px; color: var(--text-muted); margin: 0; }
 
-        /* Reviews Carousel / Grid */
-        .review-card {
-            background: #ffffff; border: 1px solid var(--border-color); border-radius: 14px; padding: 20px; text-align: left;
-        }
-        .stars { color: #f59e0b; font-size: 14px; margin-bottom: 8px; }
-        .review-card p { font-size: 13px; color: var(--text-main); font-style: italic; margin-bottom: 12px; }
-        .reviewer { font-size: 12px; font-weight: 700; color: var(--text-muted); }
-
-        /* Embedded Form Modal Card */
+        /* Booking Card Modal */
         .form-modal-card {
             background: #ffffff; border: 1px solid var(--border-color); border-radius: 20px;
             padding: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); max-width: 540px; margin: 0 auto;
@@ -121,101 +101,82 @@
     </header>
 
     <main>
-        <!-- HERO SECTION -->
+        <!-- HERO BANNER -->
         <div class="hero">
             <span class="hero-badge">Downtown Annapolis, MD</span>
             <h1>Ditch the Planning.<br>Keep the Romance.</h1>
-            <p>We craft confidential, custom date night surprise itineraries for couples—combining curated dining, hidden local spots, and pre-paid activity passes.</p>
-            <div class="cta-box">
+            <p>We craft confidential, surprise date night itineraries—combining waterfront activities, local dining, and secret dessert spots.</p>
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
                 <button class="btn" onclick="scrollToBooking()">Book A Date ($49.99) →</button>
-                <a href="#howItWorks" class="btn btn-secondary">How It Works</a>
+                <a href="tracker.html" class="btn btn-secondary">Access Live Portal</a>
             </div>
         </div>
 
         <!-- HOW IT WORKS -->
         <section id="howItWorks">
-            <h2 class="section-title">How NightOut Works</h2>
-            <p class="section-subtitle">Three simple steps to an effortless, high-end evening out.</p>
+            <h2 class="section-title">The Annapolis Experience</h2>
+            <p class="section-subtitle">Three easy steps to an effortless, memorable night out downtown.</p>
             
             <div class="grid-3">
-                <div class="feature-card">
-                    <div class="feature-icon">🗓️</div>
-                    <h3>1. Choose Your Date</h3>
-                    <p>Select your preferred Friday or Saturday evening block and lock in your date package for $49.99.</p>
+                <div class="card-with-img">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Annapolis Dock">
+                    <div class="card-body">
+                        <h3>1. Reserve Your Weekend</h3>
+                        <p>Lock in an upcoming Friday or Saturday block for $49.99. We handle all reservations behind the scenes.</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📝</div>
-                    <h3>2. Share Your Vibe</h3>
-                    <p>Fill out our short questionnaire regarding dietary needs, budget tiers, and favorite atmospheres.</p>
+                <div class="card-with-img">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Dining Experience">
+                    <div class="card-body">
+                        <h3>2. Tailor Your Preferences</h3>
+                        <p>Tell us your food allergies, budget range, and preferred vibes (seafood, wine bar, or gastropub).</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔐</div>
-                    <h3>3. Reveal as You Go</h3>
-                    <p>Access your live Date Portal on date night. Each destination unlocks in real time as your evening progresses.</p>
+                <div class="card-with-img">
+                    <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Cocktail Lounge">
+                    <div class="card-body">
+                        <h3>3. Live Date Portal</h3>
+                        <p>Follow your live date countdown on date night. Each stop unlocks right as your evening unfolds!</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- SAMPLE ITINERARY PREVIEW -->
         <section>
-            <h2 class="section-title">A Sample Evening Preview</h2>
-            <p class="section-subtitle">Here is what a typical curated Annapolis itinerary looks like in action.</p>
+            <h2 class="section-title">Sample Itinerary Preview</h2>
+            <p class="section-subtitle">Here is what a typical curated Annapolis evening looks like.</p>
 
             <div class="sample-box">
                 <div class="sample-step">
                     <div class="sample-time">5:30 PM</div>
                     <div class="sample-desc">
                         <h4>Stop 1: Harbor Activity Pass</h4>
-                        <p>Pre-booked sunset dock walk & custom cocktail flight at a West Street lounge.</p>
+                        <p>Pre-booked Ego Alley dock walk & custom cocktail flight at a West Street lounge.</p>
                     </div>
                 </div>
                 <div class="sample-step">
                     <div class="sample-time">7:00 PM</div>
                     <div class="sample-desc">
                         <h4>Stop 2: Curated Main Dinner</h4>
-                        <p>Reserved table at a waterfront seafood hotspot or cozy subterranean gastropub with VIP chef pairing.</p>
+                        <p>Reserved table at a waterfront seafood hotspot or cozy subterranean wine cafe.</p>
                     </div>
                 </div>
                 <div class="sample-step">
                     <div class="sample-time">8:45 PM</div>
                     <div class="sample-desc">
-                        <h4>Stop 3: Nightcap & Dessert Perk</h4>
-                        <p>Secret voucher for craft ice cream or late-night dessert on Main Street.</p>
+                        <h4>Stop 3: Dessert Perk</h4>
+                        <p>Secret voucher for craft ice cream on Main Street.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- VERIFIED REVIEWS -->
-        <section>
-            <h2 class="section-title">Loved by Annapolis Couples</h2>
-            <p class="section-subtitle">Real experiences from locals who skipped the planning stress.</p>
-
-            <div class="grid-3">
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p>"The countdown timer made the date so exciting! Unlocking each spot right when we finished the previous one was an incredible date night memory."</p>
-                    <div class="reviewer">— Marcus & Sarah K., Eastport</div>
-                </div>
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p>"We've lived in Annapolis for 5 years and ended up at a cozy wine cafe we had never noticed before. Unbelievable curation!"</p>
-                    <div class="reviewer">— David & Elena L., Murray Hill</div>
-                </div>
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p>"Zero planning required. We just followed the portal screen and had the best anniversary date."</p>
-                    <div class="reviewer">— Chris & Jenna T., Annapolis</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- BOOKING SECTION / MODAL CARD -->
+        <!-- BOOKING SECTION -->
         <section id="bookingSection">
             <h2 class="section-title">Reserve Your Night Out</h2>
-            <p class="section-subtitle">Packages are limited to ensure priority reservations with local partners.</p>
+            <p class="section-subtitle">Packages are limited to ensure priority merchant reservations.</p>
 
-            <!-- VIEW 1: DATE SELECT -->
             <div id="bookingCard" class="form-modal-card">
                 <h3 style="font-size: 18px; margin-bottom: 12px; text-align: center;">Upcoming Availability</h3>
                 <div style="margin: 20px 0; display: flex; flex-direction: column; gap: 12px;">
@@ -229,10 +190,9 @@
                 </div>
             </div>
 
-            <!-- VIEW 2: POST PAYMENT PREFERENCES FORM -->
             <div id="preferencesCard" class="form-modal-card hidden">
                 <h3 style="font-size: 20px; font-weight: 800; margin-bottom: 8px; text-align: center;">Payment Confirmed! 🎉</h3>
-                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px; text-align: center;">Tell us your preferences so we can customize your surprise itinerary:</p>
+                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px; text-align: center;">Tell us your preferences to receive your passcode:</p>
                 
                 <form id="preferencesForm">
                     <div class="form-group">
@@ -254,7 +214,7 @@
                     <div class="form-group">
                         <label for="vibe">5) Preferred Date Atmosphere:</label>
                         <select id="vibe" required>
-                            <option value="" disabled selected>Select a vibe style...</option>
+                            <option value="" disabled selected>Select a vibe...</option>
                             <option value="Waterfront & Seafood">Waterfront & Fresh Seafood</option>
                             <option value="Cozy & Intimate Wine Bar">Cozy & Intimate Wine Bar</option>
                             <option value="Hidden Underground Gastropub">Hidden Underground Gastropub</option>
@@ -263,10 +223,10 @@
                     <div class="form-group">
                         <label for="priceTier">6) Target Dinner Spending Range:</label>
                         <select id="priceTier" required>
-                            <option value="" disabled selected>Select target dinner price...</option>
-                            <option value="$ ($15-25 per person)">$ — Budget Friendly ($15–$25 per entree)</option>
-                            <option value="$$ ($25-40 per person)">$$ — Moderate / Standard ($25–$40 per entree)</option>
-                            <option value="$$$ ($40-65 per person)">$$$ — Upscale Dining ($40–$65 per entree)</option>
+                            <option value="" disabled selected>Select target price...</option>
+                            <option value="$ ($15-25 per person)">$ — Budget Friendly</option>
+                            <option value="$$ ($25-40 per person)">$$ — Moderate / Standard</option>
+                            <option value="$$$ ($40-65 per person)">$$$ — Upscale Dining</option>
                         </select>
                     </div>
 
@@ -282,16 +242,9 @@
         const STRIPE_LINK = "https://buy.stripe.com/test_6oU8wP7Hr5ese13cwVbII00";
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzK5qTseJuvbgz7uOT056mxcE2o-JESYaNkLnEhcASWbCfFkzxJ-SFBcqgxnPk8jW7-/exec";
 
-        function scrollToBooking() {
-            document.getElementById('bookingSection').scrollIntoView({ behavior: 'smooth' });
-        }
+        function scrollToBooking() { document.getElementById('bookingSection').scrollIntoView({ behavior: 'smooth' }); }
+        function triggerCheckout(date) { localStorage.setItem('chosenDate', date); window.location.href = STRIPE_LINK; }
 
-        function triggerCheckout(date) {
-            localStorage.setItem('chosenDate', date);
-            window.location.href = STRIPE_LINK;
-        }
-
-        // Show preferences form after successful Stripe checkout
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             if (window.location.hash === '#success' || urlParams.get('success') === 'true') {
@@ -318,8 +271,7 @@
             };
 
             fetch(GOOGLE_SCRIPT_URL, {
-                method: "POST",
-                mode: "no-cors",
+                method: "POST", mode: "no-cors",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload)
             })
