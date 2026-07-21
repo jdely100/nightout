@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Portal — NightOut Annapolis</title>
+    <style>
+        :root {
+            --bg-color: #f8f9fc;
+            --card-bg: #ffffff;
+            --accent-pink: #ff3b70;
+            --accent-purple: #7c3aed;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex; flex-direction: column; min-height: 100vh;
+        }
+
+        header { text-align: center; padding: 30px 20px 10px 20px; }
+        .logo { font-size: 28px; font-weight: 900; color: var(--text-main); text-decoration: none; }
+        .logo span { background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        main { flex: 1; max-width: 580px; width: 100%; margin: 0 auto; padding: 20px 20px 60px 20px; }
+
+        .card {
+            background-color: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: 24px; padding: 32px; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+        }
+
+        h2 { font-size: 22px; font-weight: 800; text-align: center; margin-bottom: 8px; }
+        p { color: var(--text-muted); font-size: 14px; text-align: center; margin-bottom: 20px; }
+
+        .form-group { margin-bottom: 16px; }
+        label { display: block; font-weight: 700; font-size: 12px; color: var(--accent-purple); text-transform: uppercase; margin-bottom: 6px; }
+        input[type="text"] {
+            width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border-color);
+            background: #f8fafc; font-size: 16px; font-weight: 700; text-align: center; letter-spacing: 1px;
+        }
+
+        .btn {
+            display: block; width: 100%; background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+            color: white; border: none; padding: 14px; font-size: 15px; font-weight: 800; border-radius: 12px;
+            cursor: pointer; text-align: center; text-decoration: none;
+        }
+        
+        .btn-override {
+            background: #f1f5f9; color: var(--accent-purple); border: 1px solid var(--border-color);
+            padding: 6px 12px; font-size: 12px; font-weight: 700; border-radius: 8px; cursor: pointer; margin-top: 8px;
+        }
+
+        .portal-header {
+            background: #f8fafc; border: 1px solid var(--border-color); border-radius: 16px;
+            padding: 16px; text-align: center; margin-bottom: 20px;
+        }
+
+        .status-pill {
+            display: inline-block; background: #e0e7ff; color: #3730a3; font-weight: 800;
+            padding: 4px 12px; border-radius: 20px; font-size: 12px; margin-top: 6px;
+        }
+
+        .step-card {
+            border: 1px solid var(--border-color); border-radius: 16px; padding: 16px; margin-top: 12px; transition: all 0.2s;
+        }
+        .step-card.unlocked { border-color: var(--accent-pink); background: #ffffff; }
+        .step-card.locked { background: #f8fafc; border-style: dashed; }
+
+        footer { text-align: center; padding: 20px; font-size: 12px; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">NightOut<span>Annapolis</span> 🎟️</a>
+    </header>
+
+    <main>
+        <div class="card">
+            <h2>Date Tracking Portal 🔍</h2>
+            <p>Enter your 4-digit Access Pass (e.g. NO-4821) to access your itinerary:</p>
+
+            <div class="form-group">
+                <input type="text" id="codeInput" placeholder="NO-XXXX">
+            </div>
+            <button class="btn" onclick="fetchDateDetails()">Access Portal</button>
+
+            <!-- Results Section -->
+            <div id="resultsContainer" style="display: none; margin-top: 24px;">
+                <div class="portal-header">
+                    <h3 id="displayNames" style="font-size: 18px; color: var(--accent-purple);">—</h3>
+                    <div id="displayDate" style="font-size: 13px; color: var(--text-muted);">—</div>
+                    <div id="displayStatus" class="status-pill">Planning in Progress</div>
+                </div>
+
+                <div id="itineraryTimeline"></div>
+            </div>
+            
+            <a href="index.html" style="display: block; text-align: center; margin-top: 20px; color: var(--text-muted); font-size: 13px; text-decoration: none;">← Return to Main Page</a>
+        </div>
+    </main>
+
+    <footer>&copy; 2026 NightOut Annapolis. Made by locals.</footer>
+
+    <script>
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzK5qTseJuvbgz7uOT056mxcE2o-JESYaNkLnEhcASWbCfFkzxJ-SFBcqgxnPk8jW7-/exec";
+        
+        // Stores manually unlocked step indices
+        let overriddenSteps = new Set();
+
+        // Check URL parameter automatically on load (e.g., tracker.html?code=NO-4821)
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const codeParam = urlParams.get('code');
+            if (codeParam) {
+                document.getElementById('codeInput').value = codeParam;
+                fetchDateDetails();
+            }
+        });
+
+        function fetchDateDetails() {
+            const code = document.getElementById('codeInput').value.trim();
+            if (!code) return alert('Please enter your Access Pass.');
+
+            fetch(GOOGLE_SCRIPT_URL + "?code=" + encodeURIComponent(code))
+            .then(res => res.json())
+            .then(data => {
+                if (data.found) {
+                    document.getElementById('displayNames').textContent = data.names;
+                    document.getElementById('displayDate').textContent = "Scheduled Date: " + data.date;
+                    document.getElementById('displayStatus').textContent = data.status;
+
+                    renderTimeline(data.itinerary);
+                    document.getElementById('resultsContainer').style.display = "block";
+                } else {
+                    alert('Access Pass not found. Please double-check your code.');
+                }
+            });
+        }
+
+        function renderTimeline(itinerary) {
+            const container = document.getElementById('itineraryTimeline');
+            container.innerHTML = "";
+
+            if (!itinerary || itinerary.length === 0) {
+                container.innerHTML = "<div style='text-align:center; font-size:13px; color:#94a3b8; margin-top:15px;'>Your custom itinerary is being assembled by our local team! Check back soon.</div>";
+                return;
+            }
+
+            const now = new Date();
+            const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+            itinerary.forEach((step, index) => {
+                const [stepHour, stepMin] = step.time.toString().split(':').map(Number);
+                const stepTotalMinutes = (stepHour * 60) + stepMin;
+
+                const card = document.createElement('div');
+                const isTimeReached = currentMinutes >= stepTotalMinutes;
+                const isManuallyUnlocked = overriddenSteps.has(index);
+
+                if (isTimeReached || isManuallyUnlocked) {
+                    card.className = "step-card unlocked";
+                    card.innerHTML = `
+                        <div style="font-weight: 800; color: var(--accent-pink);">🔓 ${step.time} — ${step.title}</div>
+                        <div style="font-size: 14px; font-weight: 700; margin-top: 2px;">📍 ${step.location}</div>
+                        <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">${step.details}</div>
+                    `;
+                } else {
+                    card.className = "step-card locked";
+                    card.innerHTML = `
+                        <div style="font-weight: 700; color: var(--text-muted);">🔒 Scheduled for ${step.time}</div>
+                        <div style="font-size: 13px; color: #94a3b8; margin-top: 2px;">Location details hidden until time arrives.</div>
+                        <button class="btn-override" onclick="manualUnlock(${index})">⚡ Force Unlock Step Early</button>
+                    `;
+                }
+                container.appendChild(card);
+            });
+        }
+
+        function manualUnlock(index) {
+            overriddenSteps.add(index);
+            fetchDateDetails(); // Re-render step list
+        }
+    </script>
+</body>
+</html>
