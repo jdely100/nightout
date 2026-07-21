@@ -17,17 +17,10 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            display: flex; flex-direction: column; min-height: 100vh;
-        }
+        body { background-color: var(--bg-color); color: var(--text-main); display: flex; flex-direction: column; min-height: 100vh; }
 
-        header {
-            background: #ffffff; border-bottom: 1px solid var(--border-color);
-            padding: 16px 24px; text-align: center;
-        }
-        .logo { font-size: 22px; font-weight: 900; color: var(--primary); text-decoration: none; }
+        header { background: #ffffff; border-bottom: 1px solid var(--border-color); padding: 16px 24px; text-align: center; }
+        .logo { font-size: 24px; font-weight: 900; color: var(--primary); text-decoration: none; }
         .logo span { color: var(--accent); }
 
         main { flex: 1; max-width: 520px; width: 100%; margin: 30px auto; padding: 0 20px; }
@@ -51,31 +44,20 @@
             border: none; padding: 12px; font-size: 14px; font-weight: 700; border-radius: 10px;
             cursor: pointer; text-decoration: none; transition: 0.2s;
         }
-        .btn:hover { background-color: #1e293b; }
 
-        /* Decryption Loader Screen */
-        .scanner-box {
-            background: #0f172a; color: #ffffff; border-radius: 14px; padding: 24px; margin-top: 20px; display: none;
-        }
+        .scanner-box { background: #0f172a; color: #ffffff; border-radius: 14px; padding: 24px; margin-top: 20px; display: none; }
         .progress-bar-bg { background: #1e293b; border-radius: 20px; height: 8px; width: 100%; margin: 16px 0; overflow: hidden; }
         .progress-bar-fill { background: #ff5252; height: 100%; width: 0%; transition: width 0.3s; }
 
-        /* Date Event Stage Card */
-        .portal-header {
-            background: #f8fafc; border: 1px solid var(--border-color); border-radius: 12px;
-            padding: 14px; text-align: center; margin-bottom: 20px;
-        }
+        .portal-header { background: #f8fafc; border: 1px solid var(--border-color); border-radius: 12px; padding: 14px; text-align: center; margin-bottom: 20px; }
 
         .event-card-stage {
             background: #ffffff; border: 2px solid var(--primary); border-radius: 18px;
             padding: 24px; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.03); margin-bottom: 20px;
         }
 
-        .countdown-timer-box {
-            background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px;
-            padding: 12px; text-align: center; margin: 16px 0;
-        }
-        .timer-digits { font-family: monospace; font-size: 22px; font-weight: 900; color: var(--accent); }
+        .countdown-timer-box { background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px; padding: 12px; text-align: center; margin: 16px 0; }
+        .timer-digits { font-family: monospace; font-size: 24px; font-weight: 900; color: var(--accent); }
 
         .nav-controls { display: flex; justify-content: space-between; gap: 12px; align-items: center; }
         .btn-nav {
@@ -96,29 +78,25 @@
     <main>
         <div class="card">
             <h2>Date Tracking Portal 🔍</h2>
-            <p>Enter your Passcode to open your interactive date portal:</p>
+            <p>Enter your Passcode to open your live date portal:</p>
 
-            <input type="text" id="codeInput" placeholder="e.g. 0808-142">
+            <input type="text" id="codeInput" placeholder="e.g. 0826-491">
             <button class="btn" onclick="startDecryptSequence()">Access Portal →</button>
 
-            <!-- Decryption Animation -->
             <div id="scannerBox" class="scanner-box">
                 <div style="font-size: 11px; color: #94a3b8; font-weight: 700; letter-spacing: 1px;">DECRYPTING ACCESS PASS</div>
                 <div class="progress-bar-bg"><div id="progressFill" class="progress-bar-fill"></div></div>
                 <div id="statusLog" style="font-family: monospace; font-size: 12px; color: #38bdf8;">Connecting to server...</div>
             </div>
 
-            <!-- Single Event Stage Viewer -->
             <div id="resultsContainer" style="display: none; margin-top: 24px;">
                 <div class="portal-header">
                     <h3 id="displayNames" style="font-size: 16px; color: var(--primary);">—</h3>
                     <div id="displayDate" style="font-size: 12px; color: var(--text-muted);">—</div>
                 </div>
 
-                <!-- Event Stage Container (Shows 1 Event at a Time) -->
                 <div id="eventStage" class="event-card-stage"></div>
 
-                <!-- Navigation Controls -->
                 <div class="nav-controls">
                     <button id="prevBtn" class="btn-nav" onclick="changeStep(-1)">← Previous</button>
                     <span id="stepIndicator" style="font-size: 12px; font-weight: 700; color: var(--text-muted);">Step 1 of 3</span>
@@ -139,7 +117,6 @@
         let overriddenSteps = new Set();
         let timerInterval = null;
 
-        // Auto-load if code parameter exists in URL
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const codeParam = urlParams.get('code');
@@ -165,10 +142,10 @@
             const apiPromise = fetch(GOOGLE_SCRIPT_URL + "?code=" + encodeURIComponent(code)).then(res => res.json());
 
             setTimeout(() => { fill.style.width = "35%"; log.textContent = "Verifying Passcode credentials..."; }, 200);
-            setTimeout(() => { fill.style.width = "70%"; log.textContent = "Syncing Merchant Reservations..."; }, 1000);
-            setTimeout(() => { fill.style.width = "95%"; log.textContent = "Decrypting time locks..."; }, 1800);
+            setTimeout(() => { fill.style.width = "70%"; log.textContent = "Syncing Annapolis Reservations..."; }, 900);
+            setTimeout(() => { fill.style.width = "95%"; log.textContent = "Decrypting time locks..."; }, 1600);
 
-            Promise.all([apiPromise, new Promise(resolve => setTimeout(resolve, 2200))])
+            Promise.all([apiPromise, new Promise(resolve => setTimeout(resolve, 2000))])
             .then(([data]) => {
                 fill.style.width = "100%";
                 setTimeout(() => {
@@ -188,12 +165,38 @@
             });
         }
 
+        // Helper: Converts time strings ("17:30", "5:30 PM") into total minutes from midnight
+        function parseTimeToMinutes(timeStr) {
+            if (!timeStr) return 0;
+            let str = timeStr.toString().trim().toUpperCase();
+            
+            // If ISO date string was somehow passed, extract time
+            if (str.includes('T')) {
+                let timePart = str.split('T')[1];
+                let hoursMins = timePart.split(':');
+                return parseInt(hoursMins[0], 10) * 60 + parseInt(hoursMins[1], 10);
+            }
+
+            let isPM = str.includes('PM');
+            let isAM = str.includes('AM');
+            let clean = str.replace(/AM|PM/g, '').trim();
+            let parts = clean.split(':');
+            
+            let hours = parseInt(parts[0], 10) || 0;
+            let mins = parseInt(parts[1], 10) || 0;
+
+            if (isPM && hours < 12) hours += 12;
+            if (isAM && hours === 12) hours = 0;
+
+            return (hours * 60) + mins;
+        }
+
         function renderSingleEventStage() {
             const stage = document.getElementById('eventStage');
             if (timerInterval) clearInterval(timerInterval);
 
             if (currentItinerary.length === 0) {
-                stage.innerHTML = "<div style='text-align:center; font-size:13px; color:#64748b;'>Your itinerary is being assembled by our team. Check back closer to date night!</div>";
+                stage.innerHTML = "<div style='text-align:center; font-size:13px; color:#64748b;'>Your itinerary is currently being locked in. Check back closer to your date!</div>";
                 return;
             }
 
@@ -201,28 +204,25 @@
             const now = new Date();
             const currentMinutes = now.getHours() * 60 + now.getMinutes();
 
-            const [stepHour, stepMin] = step.time.toString().split(':').map(Number);
-            const stepTotalMinutes = (stepHour * 60) + stepMin;
-
+            const stepTotalMinutes = parseTimeToMinutes(step.time);
             const isTimeReached = currentMinutes >= stepTotalMinutes;
             const isUnlocked = isTimeReached || overriddenSteps.has(currentStepIndex);
 
-            // Update Pagination Indicator & Controls
             document.getElementById('stepIndicator').textContent = `Step ${currentStepIndex + 1} of ${currentItinerary.length}`;
             document.getElementById('prevBtn').disabled = currentStepIndex === 0;
             document.getElementById('nextBtn').disabled = currentStepIndex === currentItinerary.length - 1;
 
             if (isUnlocked) {
                 stage.innerHTML = `
-                    <div style="font-size: 11px; font-weight: 800; color: #16a34a; text-transform: uppercase; letter-spacing: 0.5px;">UNLOCKED ITEM</div>
-                    <div style="font-size: 18px; font-weight: 800; color: var(--primary); margin-top: 4px;">🔓 ${step.time} — ${step.title}</div>
+                    <div style="font-size: 11px; font-weight: 800; color: #16a34a; text-transform: uppercase;">UNLOCKED ITEM</div>
+                    <div style="font-size: 18px; font-weight: 800; color: var(--primary); margin-top: 4px;">🔓 Step ${currentStepIndex + 1} — ${step.title}</div>
                     <div style="font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--accent);">📍 ${step.location}</div>
                     <div style="font-size: 13px; color: var(--text-muted); margin-top: 8px; line-height: 1.5;">${step.details}</div>
                 `;
             } else {
                 stage.innerHTML = `
-                    <div style="font-size: 11px; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px;">TIME-LOCKED EVENT</div>
-                    <div style="font-size: 16px; font-weight: 800; color: var(--primary); margin-top: 4px;">🔒 Scheduled Time: ${step.time}</div>
+                    <div style="font-size: 11px; font-weight: 800; color: var(--accent); text-transform: uppercase;">TIME-LOCKED EVENT</div>
+                    <div style="font-size: 16px; font-weight: 800; color: var(--primary); margin-top: 4px;">🔒 Scheduled Step ${currentStepIndex + 1}</div>
                     
                     <div class="countdown-timer-box">
                         <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Unlocks In</div>
@@ -233,7 +233,7 @@
                     <button style="background:#f1f5f9; border:1px solid #cbd5e1; padding:6px 12px; font-size:11px; font-weight:700; border-radius:6px; cursor:pointer; margin-top:12px;" onclick="manualUnlockCurrent()">⚡ Force Unlock Step Early</button>
                 `;
 
-                startCountdownTimer(stepHour, stepMin);
+                startCountdownTimer(stepTotalMinutes);
             }
         }
 
@@ -247,28 +247,34 @@
             renderSingleEventStage();
         }
 
-        function startCountdownTimer(targetHour, targetMin) {
+        function startCountdownTimer(targetTotalMinutes) {
             function updateClock() {
                 const now = new Date();
-                const target = new Date();
-                target.setHours(targetHour, targetMin, 0, 0);
+                const currentMins = now.getHours() * 60 + now.getMinutes();
+                const currentSecs = now.getSeconds();
 
-                let diff = target - now;
-                if (diff <= 0) {
+                let diffMins = targetTotalMinutes - currentMins - 1;
+                let diffSecs = 60 - currentSecs;
+
+                if (diffSecs === 60) {
+                    diffSecs = 0;
+                    diffMins += 1;
+                }
+
+                if (diffMins < 0) {
                     renderSingleEventStage();
                     return;
                 }
 
-                const hrs = Math.floor(diff / (1000 * 60 * 60));
-                const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const secs = Math.floor((diff % (1000 * 60)) / 1000);
+                const hrs = Math.floor(diffMins / 60);
+                const mins = diffMins % 60;
 
                 const clockElem = document.getElementById('countdownClock');
                 if (clockElem) {
                     clockElem.textContent = 
                         (hrs < 10 ? "0" + hrs : hrs) + ":" + 
                         (mins < 10 ? "0" + mins : mins) + ":" + 
-                        (secs < 10 ? "0" + secs : secs);
+                        (diffSecs < 10 ? "0" + diffSecs : diffSecs);
                 }
             }
             updateClock();
