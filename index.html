@@ -6,16 +6,18 @@
     <title>NightOut Annapolis — Fully Curated Surprises for Couples</title>
     <style>
         :root {
-            --bg-color: #0b0719;
-            --card-bg: rgba(26, 18, 51, 0.85);
-            --accent-pink: #ff2a8d;
-            --accent-hover: #f01477;
-            --accent-cyan: #00f2fe;
-            --accent-yellow: #ffb703;
-            --text-main: #ffffff;
-            --text-muted: #b3aed0;
-            --border-color: #382c6c;
-            --success-color: #00e676;
+            --bg-color: #f8f9fc;
+            --card-bg: #ffffff;
+            --accent-pink: #ff3b70;
+            --accent-hover: #e0285a;
+            --accent-purple: #7c3aed;
+            --accent-cyan: #06b6d4;
+            --accent-yellow: #f59e0b;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --success-color: #10b981;
+            --success-bg: #ecfdf5;
         }
 
         * {
@@ -28,8 +30,8 @@
         body {
             background-color: var(--bg-color);
             background-image: 
-                radial-gradient(circle at 10% 10%, rgba(255, 42, 141, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(0, 242, 254, 0.12) 0%, transparent 40%);
+                radial-gradient(circle at 10% 10%, rgba(255, 59, 112, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 90% 90%, rgba(124, 58, 237, 0.05) 0%, transparent 50%);
             color: var(--text-main);
             line-height: 1.6;
             display: flex;
@@ -46,20 +48,19 @@
             font-size: 32px;
             font-weight: 900;
             letter-spacing: -0.5px;
-            text-shadow: 0 0 20px rgba(255, 42, 141, 0.3);
+            color: var(--text-main);
         }
 
         .logo span {
-            color: var(--accent-pink);
-            background: linear-gradient(135deg, var(--accent-pink), var(--accent-cyan));
+            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .tagline {
-            font-size: 14px;
-            color: var(--accent-cyan);
-            font-weight: 700;
+            font-size: 13px;
+            color: var(--accent-purple);
+            font-weight: 800;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             margin-top: 4px;
@@ -77,9 +78,8 @@
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 24px;
-            padding: 32px;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            padding: 36px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02);
         }
 
         h2 {
@@ -88,6 +88,7 @@
             font-weight: 800;
             margin-bottom: 12px;
             text-align: center;
+            letter-spacing: -0.5px;
         }
 
         p {
@@ -96,36 +97,35 @@
             font-size: 15px;
         }
 
-        /* Playful Highlights */
         .price-badge {
             display: inline-block;
-            background: linear-gradient(135deg, var(--accent-pink), #8a2be2);
-            color: white;
+            background: linear-gradient(135deg, #fff0f5, #f3e8ff);
+            color: var(--accent-purple);
+            border: 1px solid rgba(124, 58, 237, 0.2);
             font-size: 20px;
             font-weight: 900;
-            padding: 8px 20px;
+            padding: 8px 24px;
             border-radius: 50px;
-            margin: 10px 0 20px 0;
-            box-shadow: 0 4px 15px rgba(255, 42, 141, 0.4);
+            margin: 8px 0 24px 0;
         }
 
         .highlight-box {
-            background: rgba(0, 242, 254, 0.08);
-            border: 1px dashed var(--accent-cyan);
+            background: #f0fdf4;
+            border: 1px dashed var(--success-color);
             padding: 16px;
             border-radius: 16px;
-            margin-bottom: 25px;
+            margin-bottom: 28px;
             text-align: center;
         }
 
         .highlight-box p {
             margin-bottom: 0;
-            color: #ffffff;
-            font-weight: 600;
+            color: #166534;
+            font-weight: 700;
         }
 
         .steps {
-            margin-bottom: 30px;
+            margin-bottom: 32px;
             text-align: left;
         }
 
@@ -136,8 +136,8 @@
         }
 
         .step-number {
-            background: linear-gradient(135deg, var(--accent-pink), var(--accent-cyan));
-            color: #0b0719;
+            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+            color: white;
             font-weight: 900;
             width: 32px;
             height: 32px;
@@ -145,26 +145,27 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
+            margin-right: 16px;
             flex-shrink: 0;
             font-size: 15px;
-            transform: rotate(-3deg);
+            box-shadow: 0 4px 10px rgba(255, 59, 112, 0.2);
         }
 
         .step-text h4 {
             color: var(--text-main);
             font-size: 16px;
+            font-weight: 700;
             margin-bottom: 2px;
         }
 
         .step-text p {
-            font-size: 13px;
+            font-size: 14px;
             margin-bottom: 0;
+            color: var(--text-muted);
         }
 
-        /* Date Selection List */
         .date-list {
-            margin: 20px 0;
+            margin: 24px 0;
             display: flex;
             flex-direction: column;
             gap: 14px;
@@ -173,21 +174,23 @@
         .date-item {
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 16px;
+            padding: 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255, 255, 255, 0.03);
-            transition: transform 0.2s;
+            background: var(--card-bg);
+            transition: all 0.2s ease;
         }
 
         .date-item:hover {
-            transform: translateY(-2px);
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
         }
 
         .date-info h4 {
             font-size: 16px;
             color: var(--text-main);
+            font-weight: 700;
         }
 
         .date-info p {
@@ -199,35 +202,34 @@
         .status-badge {
             font-size: 12px;
             font-weight: 800;
-            padding: 8px 16px;
+            padding: 8px 18px;
             border-radius: 50px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .status-soldout {
-            background-color: rgba(255, 255, 255, 0.05);
-            color: #666;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background-color: #f1f5f9;
+            color: #94a3b8;
+            border: 1px solid #e2e8f0;
         }
 
         .status-available {
-            background: linear-gradient(135deg, var(--accent-pink), var(--accent-hover));
+            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
             color: white;
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(255, 42, 141, 0.3);
+            box-shadow: 0 4px 12px rgba(255, 59, 112, 0.25);
             transition: all 0.2s ease;
         }
 
         .status-available:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 18px rgba(255, 42, 141, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 59, 112, 0.35);
         }
 
-        /* Preference Form */
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             text-align: left;
         }
 
@@ -235,33 +237,34 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 700;
-            font-size: 13px;
-            color: var(--accent-cyan);
+            font-size: 12px;
+            color: var(--accent-purple);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        input[type="text"], select {
+        input[type="text"], input[type="tel"], input[type="email"], select {
             width: 100%;
-            padding: 14px;
+            padding: 14px 16px;
             border-radius: 12px;
             border: 1px solid var(--border-color);
-            background-color: #0b0719;
-            color: white;
+            background-color: #f8fafc;
+            color: var(--text-main);
             font-size: 15px;
             outline: none;
-            transition: border-color 0.2s;
+            transition: all 0.2s;
         }
 
-        input[type="text"]:focus, select:focus {
+        input:focus, select:focus {
+            background-color: #ffffff;
             border-color: var(--accent-pink);
+            box-shadow: 0 0 0 4px rgba(255, 59, 112, 0.1);
         }
 
-        /* Buttons */
         .btn {
             display: block;
             width: 100%;
-            background: linear-gradient(135deg, var(--accent-pink), #8a2be2);
+            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
             color: white;
             border: none;
             padding: 16px;
@@ -271,25 +274,26 @@
             cursor: pointer;
             text-align: center;
             transition: all 0.2s;
-            box-shadow: 0 8px 20px rgba(255, 42, 141, 0.3);
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.25);
         }
 
         .btn:hover {
             opacity: 0.95;
             transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(124, 58, 237, 0.35);
         }
 
         .btn-secondary {
-            background: transparent;
+            background: #f1f5f9;
             color: var(--text-muted);
             border: 1px solid var(--border-color);
-            margin-top: 15px;
+            margin-top: 16px;
             box-shadow: none;
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
+            background: #e2e8f0;
+            color: var(--text-main);
         }
 
         .hidden {
@@ -299,8 +303,8 @@
         footer {
             text-align: center;
             padding: 24px;
-            font-size: 12px;
-            color: #554e75;
+            font-size: 13px;
+            color: var(--text-muted);
             border-top: 1px solid var(--border-color);
         }
     </style>
@@ -336,7 +340,7 @@
                     <div class="step-number">2</div>
                     <div class="step-text">
                         <h4>Customize Your Vibe</h4>
-                        <p>Tell us your dietary needs and dining style preferences so we can tailor the surprise to you.</p>
+                        <p>Tell us your contact details, dietary restrictions, and spending style so we tailor the surprise to you.</p>
                     </div>
                 </div>
                 <div class="step-item">
@@ -357,7 +361,6 @@
             <p style="text-align: center;">Includes pre-booked activity tickets, curated dining reservations with local perks, and surprise dessert vouchers.</p>
             
             <div class="date-list">
-                <!-- Sold Out Date -->
                 <div class="date-item">
                     <div class="date-info">
                         <h4>Friday, August 7</h4>
@@ -366,17 +369,15 @@
                     <div class="status-badge status-soldout">Sold Out</div>
                 </div>
 
-                <!-- AVAILABLE DATE -->
-                <div class="date-item" style="border-color: var(--accent-pink); background: rgba(255, 42, 141, 0.05);">
+                <div class="date-item" style="border-color: var(--accent-pink); background: rgba(255, 59, 112, 0.02);">
                     <div class="date-info">
                         <h4>Saturday, August 8</h4>
-                        <p style="color: var(--accent-cyan); font-weight: bold;">🔥 Only 2 Slots Left! ($49.99)</p>
+                        <p style="color: var(--accent-pink); font-weight: 700;">🔥 Only 2 Slots Left! ($49.99)</p>
                     </div>
                     <button class="status-badge status-available" onclick="triggerStripeCheckout('Saturday, August 8')">Book ($49.99)</button>
                 </div>
 
-                <!-- AVAILABLE DATE -->
-                <div class="date-item" style="border-color: var(--border-color);">
+                <div class="date-item">
                     <div class="date-info">
                         <h4>Friday, August 14</h4>
                         <p>Couples Surprise Package ($49.99)</p>
@@ -384,7 +385,6 @@
                     <button class="status-badge status-available" onclick="triggerStripeCheckout('Friday, August 14')">Book ($49.99)</button>
                 </div>
 
-                <!-- Sold Out Date -->
                 <div class="date-item">
                     <div class="date-info">
                         <h4>Saturday, August 15</h4>
@@ -399,27 +399,50 @@
 
         <!-- VIEW 3: POST-PAYMENT PREFERENCES -->
         <div id="preferencesView" class="view-card hidden">
-            <h2 style="color: var(--accent-cyan);">Payment Successful! 🎟️</h2>
-            <p style="text-align: center;">Let's customize your surprise. Tell us a bit about what you both like:</p>
+            <h2 style="color: var(--accent-purple);">Payment Successful! 🎟️</h2>
+            <p style="text-align: center;">Let's customize your surprise package. Please fill out the 6 details below:</p>
             
             <form id="preferencesForm">
                 <div class="form-group">
-                    <label for="names">Both of your full names:</label>
-                    <input type="text" id="names" placeholder="e.g. John and Jane Doe" required>
+                    <label for="names">1) First & Last Names (Both Guests):</label>
+                    <input type="text" id="names" placeholder="e.g. John Smith & Jane Doe" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="diet">Food allergies or dietary restrictions?</label>
-                    <input type="text" id="diet" placeholder="e.g. None, Vegetarian, Gluten-Free" required>
+                    <label for="phone">2) Cell Phone Number:</label>
+                    <input type="tel" id="phone" placeholder="e.g. (410) 555-0199" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="vibe">Preferred dinner atmosphere:</label>
+                    <label for="email">3) Email Address:</label>
+                    <input type="email" id="email" placeholder="e.g. john@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="diet">4) Dietary Restrictions / Food Allergies:</label>
+                    <input type="text" id="diet" placeholder="e.g. None, Vegetarian, Gluten-Free, Shellfish Allergy" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="vibe">5) Date Vibe:</label>
                     <select id="vibe" required>
-                        <option value="" disabled selected>Select a vibe...</option>
+                        <option value="" disabled selected>Select a vibe style...</option>
                         <option value="Waterfront & Seafood">Waterfront & Fresh Seafood</option>
-                        <option value="Cozy Wine Bar">Cozy & Intimate Wine Bar</option>
-                        <option value="Hidden Gastropub">Hidden Underground Gastropub</option>
+                        <option value="Cozy & Intimate Wine Bar">Cozy & Intimate Wine Bar</option>
+                        <option value="Hidden Underground Gastropub">Hidden Underground Gastropub</option>
+                        <option value="Lively Pub & Live Music">Lively Pub & Live Music</option>
+                        <option value="Fun & Interactive Arcade">Fun & Interactive Arcade / Activity Bar</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="priceTier">6) Target Dinner Price Range ($ to $$$$):</label>
+                    <select id="priceTier" required>
+                        <option value="" disabled selected>Select dinner price tier...</option>
+                        <option value="$ ($15-25 per person)">$ — Budget Friendly ($15–$25 per entree)</option>
+                        <option value="$$ ($25-40 per person)">$$ — Moderate / Standard ($25–$40 per entree)</option>
+                        <option value="$$$ ($40-65 per person)">$$$ — Upscale Dining ($40–$65 per entree)</option>
+                        <option value="$$$$ ($65+ per person)">$$$$ — High-End Luxury ($65+ per entree)</option>
                     </select>
                 </div>
 
@@ -433,8 +456,8 @@
     </footer>
 
     <script>
-        // Replace with your Stripe payment link
         const STRIPE_LINK = "https://buy.stripe.com/test_6oU8wP7Hr5ese13cwVbII00";
+        const GOOGLE_SCRIPT_URL = "YOUR_DEPLOYED_GOOGLE_APPS_SCRIPT_URL";
 
         function switchView(viewId) {
             document.getElementById('welcomeView').classList.add('hidden');
@@ -450,7 +473,6 @@
             window.location.href = STRIPE_LINK;
         }
 
-        // Detect Stripe success query params
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             if (window.location.hash === '#success' || urlParams.get('session_id') || urlParams.get('success') === 'true') {
@@ -460,8 +482,43 @@
 
         document.getElementById('preferencesForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Preferences locked in! Your surprise itinerary details will arrive via email 24 hours before your date.');
-            window.location.href = window.location.pathname;
+            
+            const submitBtn = e.target.querySelector('button');
+            submitBtn.textContent = "Saving Preferences...";
+            submitBtn.disabled = true;
+
+            const payload = {
+                date: localStorage.getItem('chosenDate') || "Saturday, August 8",
+                names: document.getElementById('names').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                diet: document.getElementById('diet').value,
+                vibe: document.getElementById('vibe').value,
+                priceTier: document.getElementById('priceTier').value
+            };
+
+            if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== "YOUR_DEPLOYED_GOOGLE_APPS_SCRIPT_URL") {
+                fetch(GOOGLE_SCRIPT_URL, {
+                    method: "POST",
+                    mode: "no-cors",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                })
+                .then(() => {
+                    alert('Preferences locked in! Your surprise itinerary details will arrive via email and text prior to your date.');
+                    localStorage.removeItem('chosenDate');
+                    window.location.href = window.location.pathname;
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert('There was an error saving your preferences. Please try again.');
+                    submitBtn.textContent = "Lock In My Preferences 🔐";
+                    submitBtn.disabled = false;
+                });
+            } else {
+                alert('Preferences submitted! (Make sure to replace GOOGLE_SCRIPT_URL with your Apps Script link).');
+                window.location.href = window.location.pathname;
+            }
         });
     </script>
 </body>
