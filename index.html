@@ -6,13 +6,13 @@
     <title>NightOut Annapolis — Fully Curated Surprises for Couples</title>
     <style>
         :root {
-            --bg-color: #f8fafc;
+            --bg-color: #FAF9F6;
             --card-bg: #ffffff;
-            --primary: #0f172a;
-            --accent: #ff5252;
-            --text-main: #0f172a;
+            --primary: #091221;
+            --accent: #C59B27;
+            --text-main: #091221;
             --text-muted: #64748b;
-            --border-color: #e2e8f0;
+            --border-color: #E2E8F0;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
@@ -20,65 +20,64 @@
         body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
 
         header {
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100;
-            padding: 16px 24px; display: flex; justify-content: space-between; align-items: center;
+            background: #091221; border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: sticky; top: 0; z-index: 100;
+            padding: 16px 28px; display: flex; justify-content: space-between; align-items: center;
         }
-        .logo { font-size: 22px; font-weight: 900; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
+        .logo { font-size: 22px; font-weight: 900; color: #ffffff; text-decoration: none; letter-spacing: -0.5px; }
         .logo span { color: var(--accent); }
-        .nav-links { display: flex; gap: 10px; align-items: center; }
+        .nav-links { display: flex; gap: 12px; align-items: center; }
         .nav-btn {
-            background: #f1f5f9; color: var(--primary); border: 1px solid var(--border-color);
-            padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 700; text-decoration: none; transition: 0.2s;
+            background: rgba(255,255,255,0.08); color: #ffffff; border: 1px solid rgba(255,255,255,0.15);
+            padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 700; text-decoration: none; transition: all 0.2s;
         }
-        .nav-btn:hover { background: #e2e8f0; }
+        .nav-btn:hover { background: rgba(255,255,255,0.18); }
 
-        /* Hero Banner */
         .hero {
             position: relative;
-            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), 
+            background: linear-gradient(rgba(9, 18, 33, 0.8), rgba(9, 18, 33, 0.8)), 
                         url('https://www.annapolis.gov/ImageRepository/Document?documentID=18540') center/cover no-repeat;
-            color: #ffffff; text-align: center; padding: 80px 20px 70px 20px; margin-bottom: 40px;
+            color: #ffffff; text-align: center; padding: 90px 20px 80px 20px; margin-bottom: 40px;
         }
         .hero-badge {
-            display: inline-block; background: rgba(255, 255, 255, 0.18); color: #ffffff;
-            font-size: 12px; font-weight: 700; padding: 6px 16px; border-radius: 50px;
-            backdrop-filter: blur(4px); margin-bottom: 16px; border: 1px solid rgba(255, 255, 255, 0.25);
+            display: inline-block; background: rgba(197, 155, 39, 0.2); color: #F3E5AB;
+            font-size: 12px; font-weight: 700; padding: 6px 18px; border-radius: 50px;
+            backdrop-filter: blur(4px); margin-bottom: 18px; border: 1px solid rgba(197, 155, 39, 0.4); text-transform: uppercase; letter-spacing: 1px;
         }
-        .hero h1 { font-size: 42px; font-weight: 900; line-height: 1.15; letter-spacing: -1px; margin-bottom: 16px; }
-        .hero p { font-size: 17px; color: #cbd5e1; max-width: 600px; margin: 0 auto 28px auto; }
+        .hero h1 { font-size: 44px; font-weight: 900; line-height: 1.15; letter-spacing: -1px; margin-bottom: 16px; }
+        .hero p { font-size: 17px; color: #cbd5e1; max-width: 620px; margin: 0 auto 32px auto; font-weight: 400; }
 
         .btn {
-            background-color: var(--accent); color: white; border: none; padding: 14px 28px;
-            font-size: 15px; font-weight: 700; border-radius: 10px; cursor: pointer; text-decoration: none; display: inline-block; transition: 0.2s;
+            background-color: var(--accent); color: #091221; border: none; padding: 14px 32px;
+            font-size: 15px; font-weight: 800; border-radius: 10px; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s;
         }
-        .btn:hover { background-color: #e04343; }
+        .btn:hover { background-color: #d8aa2e; transform: translateY(-1px); }
         .btn-secondary { background: #ffffff; color: var(--primary); }
 
-        section { max-width: 840px; margin: 40px auto; padding: 0 20px; }
-        .section-title { font-size: 24px; font-weight: 800; text-align: center; margin-bottom: 8px; }
-        .section-subtitle { font-size: 14px; color: var(--text-muted); text-align: center; margin-bottom: 32px; }
+        section { max-width: 860px; margin: 40px auto; padding: 0 20px; }
+        .section-title { font-size: 26px; font-weight: 900; text-align: center; margin-bottom: 8px; color: var(--primary); letter-spacing: -0.5px; }
+        .section-subtitle { font-size: 14px; color: var(--text-muted); text-align: center; margin-bottom: 36px; }
 
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
         .card-with-img {
-            background: #ffffff; border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03); text-align: left;
+            background: #ffffff; border: 1px solid var(--border-color); border-radius: 18px; overflow: hidden;
+            box-shadow: 0 4px 16px rgba(9, 18, 33, 0.03); text-align: left;
         }
         .card-img { width: 100%; height: 160px; object-fit: cover; }
-        .card-body { padding: 20px; }
-        .card-body h3 { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
-        .card-body p { font-size: 13px; color: var(--text-muted); margin: 0; }
+        .card-body { padding: 22px; }
+        .card-body h3 { font-size: 16px; font-weight: 800; margin-bottom: 6px; color: var(--primary); }
+        .card-body p { font-size: 13px; color: var(--text-muted); margin: 0; line-height: 1.5; }
 
-        .sample-box { background: #ffffff; border: 1px solid var(--border-color); border-radius: 16px; padding: 28px; }
-        .sample-step { display: flex; gap: 16px; align-items: flex-start; padding: 14px 0; border-bottom: 1px dashed var(--border-color); }
+        .sample-box { background: #ffffff; border: 1px solid var(--border-color); border-radius: 18px; padding: 32px; box-shadow: 0 4px 16px rgba(9, 18, 33, 0.03); }
+        .sample-step { display: flex; gap: 16px; align-items: flex-start; padding: 16px 0; border-bottom: 1px dashed var(--border-color); }
         .sample-step:last-child { border-bottom: none; }
-        .sample-time { font-weight: 800; font-size: 13px; color: var(--accent); width: 70px; flex-shrink: 0; }
-        .sample-desc h4 { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
-        .sample-desc p { font-size: 12px; color: var(--text-muted); margin: 0; }
+        .sample-time { font-weight: 800; font-size: 13px; color: var(--accent); width: 75px; flex-shrink: 0; }
+        .sample-desc h4 { font-size: 15px; font-weight: 800; margin-bottom: 2px; color: var(--primary); }
+        .sample-desc p { font-size: 13px; color: var(--text-muted); margin: 0; }
 
         .form-modal-card {
             background: #ffffff; border: 1px solid var(--border-color); border-radius: 20px;
-            padding: 36px 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); max-width: 540px; margin: 0 auto; text-align: center;
+            padding: 40px 32px; box-shadow: 0 10px 30px rgba(9, 18, 33, 0.05); max-width: 560px; margin: 0 auto; text-align: center;
         }
         .form-group { margin-bottom: 18px; text-align: left; }
         label { display: block; margin-bottom: 6px; font-weight: 700; font-size: 12px; color: var(--primary); text-transform: uppercase; }
@@ -89,8 +88,8 @@
 
         .hidden { display: none !important; }
         footer {
-            text-align: center; padding: 32px 20px; font-size: 12px; color: var(--text-muted);
-            border-top: 1px solid var(--border-color); margin-top: 60px;
+            text-align: center; padding: 36px 20px; font-size: 12px; color: var(--text-muted);
+            border-top: 1px solid var(--border-color); margin-top: 60px; background: #ffffff;
         }
         footer a { color: var(--primary); text-decoration: none; font-weight: 700; margin: 0 8px; }
     </style>
@@ -102,12 +101,11 @@
         <div class="nav-links">
             <a href="about.html" class="nav-btn">About Us</a>
             <a href="contact.html" class="nav-btn">Contact</a>
-            <a href="tracker.html" class="nav-btn" style="background: var(--primary); color: #fff;">🔍 Track Pass</a>
+            <a href="tracker.html" class="nav-btn" style="background: var(--accent); color: #091221;">🔍 Track Pass</a>
         </div>
     </header>
 
     <main>
-        <!-- HERO BANNER -->
         <div class="hero">
             <span class="hero-badge">Downtown Annapolis • Ego Alley & Historic District</span>
             <h1>Ditch the Planning.<br>Keep the Romance.</h1>
@@ -118,28 +116,27 @@
             </div>
         </div>
 
-        <!-- HOW IT WORKS -->
         <section id="howItWorks">
             <h2 class="section-title">The Annapolis Experience</h2>
             <p class="section-subtitle">Three easy steps to an effortless, memorable night out in America's Sailing Capital.</p>
             
             <div class="grid-3">
                 <div class="card-with-img">
-                    <img src="https://www.annapolis.gov/PhotoGallery/31/dscn3063.jpg" class="card-img" alt="Annapolis Waterfront & Harbor">
+                    <img src="https://www.annapolis.gov/PhotoGallery/31/dscn3063.jpg" class="card-img" alt="Annapolis Waterfront">
                     <div class="card-body">
                         <h3>1. Reserve Ego Alley Blocks</h3>
                         <p>Lock in an available date and evening time slot. We handle all reservations behind the scenes.</p>
                     </div>
                 </div>
                 <div class="card-with-img">
-                    <img src="https://www.annapolis.gov/ImageRepository/Document?documentID=18540" class="card-img" alt="Historic Annapolis City Hall & Downtown">
+                    <img src="https://www.annapolis.gov/ImageRepository/Document?documentID=18540" class="card-img" alt="Historic Annapolis">
                     <div class="card-body">
                         <h3>2. Customize Your Style</h3>
                         <p>Tell us your food preferences, dietary needs, and favorite atmospheres (seafood, wine café, or subterranean pub).</p>
                     </div>
                 </div>
                 <div class="card-with-img">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ40_DTo6qnZ7VQgvxo6KxEm5HqaQjsruA-_QVmk8aY9A&s" class="card-img" alt="Annapolis Harbor Scene">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ40_DTo6qnZ7VQgvxo6KxEm5HqaQjsruA-_QVmk8aY9A&s" class="card-img" alt="Annapolis Harbor">
                     <div class="card-body">
                         <h3>3. Live Date Portal</h3>
                         <p>Follow your passcode countdown on date night. Each stop unlocks right as your evening unfolds!</p>
@@ -148,7 +145,6 @@
             </div>
         </section>
 
-        <!-- SAMPLE ITINERARY PREVIEW -->
         <section>
             <h2 class="section-title">Sample Itinerary Preview</h2>
             <p class="section-subtitle">Here is what a typical curated Annapolis evening looks like in action.</p>
@@ -178,16 +174,15 @@
             </div>
         </section>
 
-        <!-- BOOKING / PREFERENCES SECTION -->
         <section id="bookingSection">
             <div id="bookingCard" class="form-modal-card">
-                <h3 style="font-size: 22px; font-weight: 800; margin-bottom: 8px;">Ready for Date Night?</h3>
+                <h3 style="font-size: 22px; font-weight: 800; margin-bottom: 8px; color: var(--primary);">Ready for Date Night?</h3>
                 <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 24px;">Explore upcoming Friday and Saturday dates, view available start times, and secure your package.</p>
-                <a href="booking.html" class="btn" style="width: 100%;">View Available Dates & Start Times →</a>
+                <a href="booking.html" class="btn" style="width: 100%; display: block;">View Available Dates & Start Times →</a>
             </div>
 
             <div id="preferencesCard" class="form-modal-card hidden">
-                <h3 style="font-size: 20px; font-weight: 800; margin-bottom: 8px;">Payment Confirmed! 🎉</h3>
+                <h3 style="font-size: 20px; font-weight: 800; margin-bottom: 8px; color: var(--primary);">Payment Confirmed! 🎉</h3>
                 <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Tell us your preferences to receive your passcode:</p>
                 
                 <form id="preferencesForm">
