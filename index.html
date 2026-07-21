@@ -36,7 +36,7 @@
         .hero {
             position: relative;
             background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), 
-                        url('https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+                        url('https://www.annapolis.gov/ImageRepository/Document?documentID=18540') center/cover no-repeat;
             color: #ffffff; text-align: center; padding: 80px 20px 70px 20px; margin-bottom: 40px;
         }
         .hero-badge {
@@ -63,10 +63,45 @@
             background: #ffffff; border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.03); text-align: left;
         }
-        .card-img { width: 100%; height: 150px; object-fit: cover; }
+        .card-img { width: 100%; height: 160px; object-fit: cover; }
         .card-body { padding: 20px; }
         .card-body h3 { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
         .card-body p { font-size: 13px; color: var(--text-muted); margin: 0; }
+
+        /* About Us Section Styling */
+        .about-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 36px 32px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+            text-align: center;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 28px;
+            text-align: left;
+        }
+        .about-pillar {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .about-pillar h4 {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 6px;
+            color: var(--primary);
+        }
+        .about-pillar p {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.5;
+        }
 
         .sample-box { background: #ffffff; border: 1px solid var(--border-color); border-radius: 16px; padding: 28px; }
         .sample-step { display: flex; gap: 16px; align-items: flex-start; padding: 14px 0; border-bottom: 1px dashed var(--border-color); }
@@ -116,21 +151,21 @@
             
             <div class="grid-3">
                 <div class="card-with-img">
-                    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Annapolis Harbor">
+                    <img src="https://www.annapolis.gov/PhotoGallery/31/dscn3063.jpg" class="card-img" alt="Annapolis Waterfront & Harbor">
                     <div class="card-body">
                         <h3>1. Reserve Ego Alley Blocks</h3>
                         <p>Lock in an available date and evening time slot. We handle all reservations behind the scenes.</p>
                     </div>
                 </div>
                 <div class="card-with-img">
-                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Dining Experience">
+                    <img src="https://www.annapolis.gov/ImageRepository/Document?documentID=18540" class="card-img" alt="Historic Annapolis City Hall & Downtown">
                     <div class="card-body">
                         <h3>2. Customize Your Style</h3>
                         <p>Tell us your food preferences, dietary needs, and favorite atmospheres (seafood, wine café, or subterranean pub).</p>
                     </div>
                 </div>
                 <div class="card-with-img">
-                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" class="card-img" alt="Annapolis Watermark Cruise">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ40_DTo6qnZ7VQgvxo6KxEm5HqaQjsruA-_QVmk8aY9A&s" class="card-img" alt="Annapolis Harbor Scene">
                     <div class="card-body">
                         <h3>3. Live Date Portal</h3>
                         <p>Follow your passcode countdown on date night. Each stop unlocks right as your evening unfolds!</p>
@@ -169,16 +204,35 @@
             </div>
         </section>
 
+        <!-- ABOUT US SECTION -->
+        <section id="aboutUs">
+            <div class="about-card">
+                <h2 class="section-title">Our Purpose & Mission</h2>
+                <p style="font-size: 15px; color: var(--text-muted); max-width: 640px; margin: 0 auto;">
+                    We created NightOut Annapolis with a simple belief: couples deserve extraordinary, stress-free date nights that turn into lifelong memories, and the best way to do that is by supporting the incredible local culture right in our backyard.
+                </p>
+
+                <div class="about-grid">
+                    <div class="about-pillar">
+                        <h4>✨ Unforgettable Memories</h4>
+                        <p>We eliminate decision fatigue and planning stress. The element of surprise brings back genuine excitement, spontaneity, and connection for every date night.</p>
+                    </div>
+                    <div class="about-pillar">
+                        <h4>⛵ Championing Local Businesses</h4>
+                        <p>Annapolis is home to iconic historic spots, independent restaurants, and waterfront gems. Every NightOut itinerary directs 100% of date spending straight into local merchants.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- BOOKING / PREFERENCES SECTION -->
         <section id="bookingSection">
-            <!-- DISPLAYED BY DEFAULT: CLICKABLE BUTTON TO OPEN BOOKING PAGE -->
             <div id="bookingCard" class="form-modal-card">
                 <h3 style="font-size: 22px; font-weight: 800; margin-bottom: 8px;">Ready for Date Night?</h3>
                 <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 24px;">Explore upcoming Friday and Saturday dates, view available start times, and secure your package.</p>
                 <a href="booking.html" class="btn" style="width: 100%;">View Available Dates & Start Times →</a>
             </div>
 
-            <!-- PREFERENCES FORM (REVEALED AUTOMATICALLY AFTER STRIPE PAYMENTS) -->
             <div id="preferencesCard" class="form-modal-card hidden">
                 <h3 style="font-size: 20px; font-weight: 800; margin-bottom: 8px;">Payment Confirmed! 🎉</h3>
                 <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Tell us your preferences to receive your passcode:</p>
