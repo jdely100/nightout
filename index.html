@@ -12,20 +12,13 @@
             --accent-hover: #e0285a;
             --accent-purple: #7c3aed;
             --accent-cyan: #06b6d4;
-            --accent-yellow: #f59e0b;
             --text-main: #0f172a;
             --text-muted: #64748b;
             --border-color: #e2e8f0;
             --success-color: #10b981;
-            --success-bg: #ecfdf5;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
 
         body {
             background-color: var(--bg-color);
@@ -39,274 +32,89 @@
             min-height: 100vh;
         }
 
-        header {
-            text-align: center;
-            padding: 40px 20px 10px 20px;
-        }
+        header { text-align: center; padding: 30px 20px 10px 20px; }
 
-        .logo {
-            font-size: 32px;
-            font-weight: 900;
-            letter-spacing: -0.5px;
-            color: var(--text-main);
-        }
+        .logo { font-size: 30px; font-weight: 900; letter-spacing: -0.5px; color: var(--text-main); }
+        .logo span { background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .tagline { font-size: 13px; color: var(--accent-purple); font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 4px; }
 
-        .logo span {
-            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .tagline {
-            font-size: 13px;
-            color: var(--accent-purple);
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-top: 4px;
-        }
-
-        main {
-            flex: 1;
-            max-width: 580px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 20px 20px 60px 20px;
-        }
+        main { flex: 1; max-width: 580px; width: 100%; margin: 0 auto; padding: 20px 20px 60px 20px; }
 
         .view-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 24px;
-            padding: 36px;
-            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02);
+            padding: 32px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
         }
 
-        h2 {
-            color: var(--text-main);
-            font-size: 24px;
-            font-weight: 800;
-            margin-bottom: 12px;
-            text-align: center;
-            letter-spacing: -0.5px;
-        }
-
-        p {
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            font-size: 15px;
-        }
+        h2 { color: var(--text-main); font-size: 24px; font-weight: 800; margin-bottom: 12px; text-align: center; }
+        p { color: var(--text-muted); margin-bottom: 20px; font-size: 15px; }
 
         .price-badge {
             display: inline-block;
             background: linear-gradient(135deg, #fff0f5, #f3e8ff);
             color: var(--accent-purple);
             border: 1px solid rgba(124, 58, 237, 0.2);
-            font-size: 20px;
-            font-weight: 900;
-            padding: 8px 24px;
-            border-radius: 50px;
-            margin: 8px 0 24px 0;
+            font-size: 18px; font-weight: 900; padding: 6px 20px; border-radius: 50px; margin: 8px 0 20px 0;
         }
 
-        .highlight-box {
-            background: #f0fdf4;
-            border: 1px dashed var(--success-color);
-            padding: 16px;
-            border-radius: 16px;
-            margin-bottom: 28px;
-            text-align: center;
-        }
+        .highlight-box { background: #f0fdf4; border: 1px dashed var(--success-color); padding: 14px; border-radius: 16px; margin-bottom: 24px; text-align: center; }
+        .highlight-box p { margin-bottom: 0; color: #166534; font-weight: 700; }
 
-        .highlight-box p {
-            margin-bottom: 0;
-            color: #166534;
-            font-weight: 700;
-        }
-
-        .steps {
-            margin-bottom: 32px;
-            text-align: left;
-        }
-
-        .step-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-
+        .steps { margin-bottom: 28px; text-align: left; }
+        .step-item { display: flex; align-items: flex-start; margin-bottom: 16px; }
         .step-number {
             background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
-            color: white;
-            font-weight: 900;
-            width: 32px;
-            height: 32px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 16px;
-            flex-shrink: 0;
-            font-size: 15px;
-            box-shadow: 0 4px 10px rgba(255, 59, 112, 0.2);
+            color: white; font-weight: 900; width: 30px; height: 30px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center; margin-right: 14px; flex-shrink: 0; font-size: 14px;
         }
+        .step-text h4 { color: var(--text-main); font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+        .step-text p { font-size: 13px; margin-bottom: 0; color: var(--text-muted); }
 
-        .step-text h4 {
-            color: var(--text-main);
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 2px;
-        }
-
-        .step-text p {
-            font-size: 14px;
-            margin-bottom: 0;
-            color: var(--text-muted);
-        }
-
-        .date-list {
-            margin: 24px 0;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
+        .date-list { margin: 20px 0; display: flex; flex-direction: column; gap: 12px; }
         .date-item {
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 18px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--card-bg);
-            transition: all 0.2s ease;
+            border: 1px solid var(--border-color); border-radius: 16px; padding: 16px;
+            display: flex; justify-content: space-between; align-items: center; background: var(--card-bg);
         }
+        .date-info h4 { font-size: 15px; color: var(--text-main); font-weight: 700; }
+        .date-info p { font-size: 13px; margin-bottom: 0; color: var(--text-muted); }
 
-        .date-item:hover {
-            border-color: #cbd5e1;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-        }
-
-        .date-info h4 {
-            font-size: 16px;
-            color: var(--text-main);
-            font-weight: 700;
-        }
-
-        .date-info p {
-            font-size: 13px;
-            margin-bottom: 0;
-            color: var(--text-muted);
-        }
-
-        .status-badge {
-            font-size: 12px;
-            font-weight: 800;
-            padding: 8px 18px;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .status-soldout {
-            background-color: #f1f5f9;
-            color: #94a3b8;
-            border: 1px solid #e2e8f0;
-        }
-
+        .status-badge { font-size: 12px; font-weight: 800; padding: 8px 16px; border-radius: 50px; text-transform: uppercase; }
+        .status-soldout { background-color: #f1f5f9; color: #94a3b8; border: 1px solid #e2e8f0; }
         .status-available {
             background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
-            color: white;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(255, 59, 112, 0.25);
-            transition: all 0.2s ease;
+            color: white; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(255, 59, 112, 0.25);
         }
 
-        .status-available:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(255, 59, 112, 0.35);
-        }
-
-        .form-group {
-            margin-bottom: 22px;
-            text-align: left;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 700;
-            font-size: 12px;
-            color: var(--accent-purple);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
+        .form-group { margin-bottom: 20px; text-align: left; }
+        label { display: block; margin-bottom: 6px; font-weight: 700; font-size: 12px; color: var(--accent-purple); text-transform: uppercase; }
         input[type="text"], input[type="tel"], input[type="email"], select {
-            width: 100%;
-            padding: 14px 16px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            background-color: #f8fafc;
-            color: var(--text-main);
-            font-size: 15px;
-            outline: none;
-            transition: all 0.2s;
+            width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border-color);
+            background-color: #f8fafc; color: var(--text-main); font-size: 15px; outline: none;
         }
-
-        input:focus, select:focus {
-            background-color: #ffffff;
-            border-color: var(--accent-pink);
-            box-shadow: 0 0 0 4px rgba(255, 59, 112, 0.1);
-        }
+        input:focus, select:focus { background-color: #ffffff; border-color: var(--accent-pink); }
 
         .btn {
-            display: block;
-            width: 100%;
-            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
-            color: white;
-            border: none;
-            padding: 16px;
-            font-size: 16px;
-            font-weight: 800;
-            border-radius: 14px;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.2s;
-            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.25);
+            display: block; width: 100%; background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+            color: white; border: none; padding: 14px; font-size: 16px; font-weight: 800; border-radius: 14px;
+            cursor: pointer; text-align: center; box-shadow: 0 6px 18px rgba(124, 58, 237, 0.2);
+        }
+        .btn-secondary { background: #f1f5f9; color: var(--text-muted); border: 1px solid var(--border-color); margin-top: 12px; box-shadow: none; }
+
+        /* Tracking Result Box */
+        .track-result-box {
+            background: #f8fafc; border: 1px solid var(--border-color); border-radius: 16px; padding: 20px;
+            margin-top: 20px; text-align: left; display: none;
+        }
+        .track-result-box h3 { font-size: 18px; color: var(--accent-purple); margin-bottom: 4px; }
+        .track-status-pill {
+            display: inline-block; background: #e0e7ff; color: #3730a3; font-weight: 800;
+            padding: 6px 14px; border-radius: 20px; font-size: 13px; margin-top: 6px;
         }
 
-        .btn:hover {
-            opacity: 0.95;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(124, 58, 237, 0.35);
-        }
-
-        .btn-secondary {
-            background: #f1f5f9;
-            color: var(--text-muted);
-            border: 1px solid var(--border-color);
-            margin-top: 16px;
-            box-shadow: none;
-        }
-
-        .btn-secondary:hover {
-            background: #e2e8f0;
-            color: var(--text-main);
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        footer {
-            text-align: center;
-            padding: 24px;
-            font-size: 13px;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border-color);
-        }
+        .hidden { display: none !important; }
+        footer { text-align: center; padding: 20px; font-size: 12px; color: var(--text-muted); border-top: 1px solid var(--border-color); }
     </style>
 </head>
 <body>
@@ -333,26 +141,27 @@
                     <div class="step-number">1</div>
                     <div class="step-text">
                         <h4>Pick Your Friday or Saturday</h4>
-                        <p>Lock in your preferred date for $49.99. We handle all reservations, bookings, and logistics.</p>
+                        <p>Lock in your preferred date for $49.99. We handle all reservations and logistics.</p>
                     </div>
                 </div>
                 <div class="step-item">
                     <div class="step-number">2</div>
                     <div class="step-text">
                         <h4>Customize Your Vibe</h4>
-                        <p>Tell us your contact details, dietary restrictions, and spending style so we tailor the surprise to you.</p>
+                        <p>Fill out your preferences to receive your unique Date Tracking Code via email.</p>
                     </div>
                 </div>
                 <div class="step-item">
                     <div class="step-number">3</div>
                     <div class="step-text">
                         <h4>Show Up & Unlock the Fun</h4>
-                        <p>Receive your digital envelope with parking, dress code, activity passes, and dinner vouchers!</p>
+                        <p>Track your date status online and reveal each location as your date unfolds!</p>
                     </div>
                 </div>
             </div>
 
             <button class="btn" onclick="switchView('bookingView')">See Available Dates 🎉</button>
+            <button class="btn btn-secondary" onclick="switchView('trackingView')">🔍 Track Existing Date</button>
         </div>
 
         <!-- VIEW 2: BOOKING SCREEN -->
@@ -384,14 +193,6 @@
                     </div>
                     <button class="status-badge status-available" onclick="triggerStripeCheckout('Friday, August 14')">Book ($49.99)</button>
                 </div>
-
-                <div class="date-item">
-                    <div class="date-info">
-                        <h4>Saturday, August 15</h4>
-                        <p>Couples Surprise Package ($49.99)</p>
-                    </div>
-                    <div class="status-badge status-soldout">Sold Out</div>
-                </div>
             </div>
 
             <button class="btn btn-secondary" onclick="switchView('welcomeView')">← Back to Overview</button>
@@ -400,29 +201,25 @@
         <!-- VIEW 3: POST-PAYMENT PREFERENCES -->
         <div id="preferencesView" class="view-card hidden">
             <h2 style="color: var(--accent-purple);">Payment Successful! 🎟️</h2>
-            <p style="text-align: center;">Let's customize your surprise package. Please fill out the 6 details below:</p>
+            <p style="text-align: center;">Fill out your preferences below. You'll receive a Tracking Code via email instantly:</p>
             
             <form id="preferencesForm">
                 <div class="form-group">
                     <label for="names">1) First & Last Names (Both Guests):</label>
                     <input type="text" id="names" placeholder="e.g. John Smith & Jane Doe" required>
                 </div>
-
                 <div class="form-group">
                     <label for="phone">2) Cell Phone Number:</label>
                     <input type="tel" id="phone" placeholder="e.g. (410) 555-0199" required>
                 </div>
-
                 <div class="form-group">
                     <label for="email">3) Email Address:</label>
                     <input type="email" id="email" placeholder="e.g. john@example.com" required>
                 </div>
-
                 <div class="form-group">
                     <label for="diet">4) Dietary Restrictions / Food Allergies:</label>
-                    <input type="text" id="diet" placeholder="e.g. None, Vegetarian, Gluten-Free, Shellfish Allergy" required>
+                    <input type="text" id="diet" placeholder="e.g. None, Vegetarian, Shellfish Allergy" required>
                 </div>
-
                 <div class="form-group">
                     <label for="vibe">5) Date Vibe:</label>
                     <select id="vibe" required>
@@ -431,10 +228,8 @@
                         <option value="Cozy & Intimate Wine Bar">Cozy & Intimate Wine Bar</option>
                         <option value="Hidden Underground Gastropub">Hidden Underground Gastropub</option>
                         <option value="Lively Pub & Live Music">Lively Pub & Live Music</option>
-                        <option value="Fun & Interactive Arcade">Fun & Interactive Arcade / Activity Bar</option>
                     </select>
                 </div>
-
                 <div class="form-group">
                     <label for="priceTier">6) Target Dinner Price Range ($ to $$$$):</label>
                     <select id="priceTier" required>
@@ -442,12 +237,35 @@
                         <option value="$ ($15-25 per person)">$ — Budget Friendly ($15–$25 per entree)</option>
                         <option value="$$ ($25-40 per person)">$$ — Moderate / Standard ($25–$40 per entree)</option>
                         <option value="$$$ ($40-65 per person)">$$$ — Upscale Dining ($40–$65 per entree)</option>
-                        <option value="$$$$ ($65+ per person)">$$$$ — High-End Luxury ($65+ per entree)</option>
                     </select>
                 </div>
 
-                <button type="submit" class="btn">Lock In My Preferences 🔐</button>
+                <button type="submit" class="btn">Lock In My Preferences & Get Code 🔐</button>
             </form>
+        </div>
+
+        <!-- VIEW 4: TRACK DATE STATUS & TIMELINE -->
+        <div id="trackingView" class="view-card hidden">
+            <h2>Track Your Date Status 🔍</h2>
+            <p style="text-align: center;">Enter the 6-digit tracking code emailed to you after checkout (e.g. NO-849201):</p>
+            
+            <div class="form-group">
+                <label for="trackCodeInput">Tracking Code:</label>
+                <input type="text" id="trackCodeInput" placeholder="e.g. NO-123456">
+            </div>
+            <button class="btn" onclick="checkDateStatus()">Check Status</button>
+
+            <div id="trackResultBox" class="track-result-box">
+                <h3 id="trackNames">John & Jane</h3>
+                <p id="trackDate" style="font-size: 14px; margin-bottom: 6px;">Date: Saturday, August 8</p>
+                <div><strong>Current Status:</strong></div>
+                <div id="trackStatusPill" class="track-status-pill">Planning in Progress 🎨</div>
+
+                <!-- Timed Itinerary Elements Inject Here -->
+                <div id="itineraryTimelineContainer" style="margin-top: 15px;"></div>
+            </div>
+
+            <button class="btn btn-secondary" onclick="switchView('welcomeView')">← Back to Overview</button>
         </div>
     </main>
 
@@ -457,12 +275,13 @@
 
     <script>
         const STRIPE_LINK = "https://buy.stripe.com/test_6oU8wP7Hr5ese13cwVbII00";
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzMsuu73wK40wgpe32f9XLx5YcAOZNStdi_dxCqCKlOtjXqz4mz4_fwWxeo29KBY-Tu1w/exec";
+        const GOOGLE_SCRIPT_URL = "YOUR_DEPLOYED_GOOGLE_APPS_SCRIPT_URL";
 
         function switchView(viewId) {
             document.getElementById('welcomeView').classList.add('hidden');
             document.getElementById('bookingView').classList.add('hidden');
             document.getElementById('preferencesView').classList.add('hidden');
+            document.getElementById('trackingView').classList.add('hidden');
             
             document.getElementById(viewId).classList.remove('hidden');
             window.scrollTo(0, 0);
@@ -480,11 +299,12 @@
             }
         });
 
+        // Submit preferences and request tracking code
         document.getElementById('preferencesForm').addEventListener('submit', (e) => {
             e.preventDefault();
             
             const submitBtn = e.target.querySelector('button');
-            submitBtn.textContent = "Saving Preferences...";
+            submitBtn.textContent = "Saving & Emailing Code...";
             submitBtn.disabled = true;
 
             const payload = {
@@ -497,29 +317,91 @@
                 priceTier: document.getElementById('priceTier').value
             };
 
-            if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== "YOUR_DEPLOYED_GOOGLE_APPS_SCRIPT_URL") {
-                fetch(GOOGLE_SCRIPT_URL, {
-                    method: "POST",
-                    mode: "no-cors",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(payload)
-                })
-                .then(() => {
-                    alert('Preferences locked in! Your surprise itinerary details will arrive via email and text prior to your date.');
-                    localStorage.removeItem('chosenDate');
-                    window.location.href = window.location.pathname;
-                })
-                .catch(err => {
-                    console.error(err);
-                    alert('There was an error saving your preferences. Please try again.');
-                    submitBtn.textContent = "Lock In My Preferences 🔐";
-                    submitBtn.disabled = false;
-                });
-            } else {
-                alert('Preferences submitted! (Make sure to replace GOOGLE_SCRIPT_URL with your Apps Script link).');
-                window.location.href = window.location.pathname;
-            }
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            })
+            .then(() => {
+                alert('Preferences locked in! We have emailed your unique Tracking Code to ' + payload.email);
+                localStorage.removeItem('chosenDate');
+                switchView('trackingView');
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Error saving preferences. Please try again.');
+                submitBtn.textContent = "Lock In My Preferences & Get Code 🔐";
+                submitBtn.disabled = false;
+            });
         });
+
+        // Query date status & check unlock times from Google Sheet
+        function checkDateStatus() {
+            const code = document.getElementById('trackCodeInput').value.trim();
+            if (!code) {
+                alert('Please enter a tracking code.');
+                return;
+            }
+
+            const resultBox = document.getElementById('trackResultBox');
+            resultBox.style.display = "none";
+
+            fetch(GOOGLE_SCRIPT_URL + "?code=" + encodeURIComponent(code))
+            .then(res => res.json())
+            .then(data => {
+                if (data.found) {
+                    document.getElementById('trackNames').textContent = data.names;
+                    document.getElementById('trackDate').textContent = "Scheduled Date: " + data.date;
+                    document.getElementById('trackStatusPill').textContent = data.status;
+                    
+                    const container = document.getElementById('itineraryTimelineContainer');
+                    container.innerHTML = ""; // Clear existing elements
+
+                    if (data.itinerary && data.itinerary.length > 0) {
+                        const now = new Date();
+                        const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+                        data.itinerary.forEach((step, index) => {
+                            // Parse HH:MM into total minutes for time comparison
+                            const [stepHour, stepMin] = step.time.toString().split(':').map(Number);
+                            const stepTotalMinutes = (stepHour * 60) + stepMin;
+
+                            const itemDiv = document.createElement('div');
+                            itemDiv.style.cssText = "padding: 12px; margin-top: 10px; border-radius: 12px; border: 1px solid #e2e8f0;";
+
+                            // Reveal item if current time >= scheduled step time
+                            if (currentMinutes >= stepTotalMinutes) {
+                                itemDiv.style.backgroundColor = "#ffffff";
+                                itemDiv.style.borderColor = "#ff3b70";
+                                itemDiv.innerHTML = `
+                                    <div style="font-weight: 800; color: #ff3b70;">🔓 ${step.time} — ${step.title}</div>
+                                    <div style="font-size: 14px; font-weight: 700; color: #0f172a; margin-top: 2px;">📍 ${step.location}</div>
+                                    <div style="font-size: 13px; color: #64748b; margin-top: 4px;">${step.details}</div>
+                                `;
+                            } else {
+                                // Keep locked if time has not arrived yet
+                                itemDiv.style.backgroundColor = "#f1f5f9";
+                                itemDiv.style.borderColor = "#cbd5e1";
+                                itemDiv.innerHTML = `
+                                    <div style="font-weight: 700; color: #64748b;">🔒 Unlocks at ${step.time}</div>
+                                    <div style="font-size: 13px; color: #94a3b8;">Destination details for Step ${index + 1} will reveal when time arrives.</div>
+                                `;
+                            }
+                            container.appendChild(itemDiv);
+                        });
+                    }
+
+                    resultBox.style.display = "block";
+                } else {
+                    alert('Tracking code not found. Please double-check your code.');
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Unable to fetch status. Please check your tracking code.');
+            });
+        }
     </script>
 </body>
 </html>
