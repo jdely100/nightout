@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Date Portal — NightOut Annapolis</title>
+    <title>Live Date Portal — NightOut Annapolis</title>
     <style>
         :root {
             --bg-color: #f8fafc;
@@ -23,71 +23,66 @@
             display: flex; flex-direction: column; min-height: 100vh;
         }
 
-        header { text-align: center; padding: 30px 20px 10px 20px; }
-        .logo { font-size: 26px; font-weight: 900; color: var(--primary); text-decoration: none; }
+        header {
+            background: #ffffff; border-bottom: 1px solid var(--border-color);
+            padding: 16px 24px; text-align: center;
+        }
+        .logo { font-size: 22px; font-weight: 900; color: var(--primary); text-decoration: none; }
         .logo span { color: var(--accent); }
 
-        main { flex: 1; max-width: 540px; width: 100%; margin: 0 auto; padding: 20px 20px 60px 20px; }
+        main { flex: 1; max-width: 520px; width: 100%; margin: 30px auto; padding: 0 20px; }
 
         .card {
             background-color: var(--card-bg); border: 1px solid var(--border-color);
-            border-radius: 16px; padding: 28px; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+            border-radius: 20px; padding: 28px; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04); text-align: center;
         }
 
-        h2 { font-size: 20px; font-weight: 800; text-align: center; margin-bottom: 6px; color: var(--primary); }
-        p { color: var(--text-muted); font-size: 13px; text-align: center; margin-bottom: 20px; }
+        h2 { font-size: 20px; font-weight: 800; margin-bottom: 6px; color: var(--primary); }
+        p { color: var(--text-muted); font-size: 13px; margin-bottom: 20px; }
 
-        .form-group { margin-bottom: 16px; }
         input[type="text"] {
             width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border-color);
-            background: #ffffff; font-size: 16px; font-weight: 700; text-align: center; letter-spacing: 2px;
-            text-transform: uppercase;
+            background: #ffffff; font-size: 18px; font-weight: 800; text-align: center; letter-spacing: 2px;
+            text-transform: uppercase; margin-bottom: 14px; outline: none;
         }
 
         .btn {
-            display: block; width: 100%; background-color: var(--primary);
-            color: white; border: none; padding: 12px; font-size: 14px; font-weight: 700; border-radius: 10px;
-            cursor: pointer; text-align: center; text-decoration: none;
+            display: block; width: 100%; background-color: var(--primary); color: white;
+            border: none; padding: 12px; font-size: 14px; font-weight: 700; border-radius: 10px;
+            cursor: pointer; text-decoration: none; transition: 0.2s;
         }
+        .btn:hover { background-color: #1e293b; }
 
-        /* Scanning / Decrypting Animation Screens */
+        /* Decryption Loader Screen */
         .scanner-box {
-            background: #0f172a; color: #ffffff; border-radius: 12px; padding: 24px;
-            text-align: center; margin-top: 20px; display: none;
+            background: #0f172a; color: #ffffff; border-radius: 14px; padding: 24px; margin-top: 20px; display: none;
         }
+        .progress-bar-bg { background: #1e293b; border-radius: 20px; height: 8px; width: 100%; margin: 16px 0; overflow: hidden; }
+        .progress-bar-fill { background: #ff5252; height: 100%; width: 0%; transition: width 0.3s; }
 
-        .progress-bar-bg {
-            background: #1e293b; border-radius: 20px; height: 8px; width: 100%; margin: 16px 0; overflow: hidden;
-        }
-        .progress-bar-fill {
-            background: #ff5252; height: 100%; width: 0%; transition: width 0.3s ease;
-        }
-
-        .status-log {
-            font-family: monospace; font-size: 12px; color: #38bdf8; min-height: 20px;
-        }
-
-        /* Results Display */
+        /* Date Event Stage Card */
         .portal-header {
             background: #f8fafc; border: 1px solid var(--border-color); border-radius: 12px;
-            padding: 16px; text-align: center; margin-top: 20px;
+            padding: 14px; text-align: center; margin-bottom: 20px;
         }
 
-        .status-pill {
-            display: inline-block; background: #e2e8f0; color: var(--primary); font-weight: 700;
-            padding: 4px 12px; border-radius: 20px; font-size: 11px; margin-top: 6px; text-transform: uppercase;
+        .event-card-stage {
+            background: #ffffff; border: 2px solid var(--primary); border-radius: 18px;
+            padding: 24px; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.03); margin-bottom: 20px;
         }
 
-        .step-card {
-            border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; margin-top: 12px;
+        .countdown-timer-box {
+            background: #f8fafc; border: 1px solid var(--border-color); border-radius: 10px;
+            padding: 12px; text-align: center; margin: 16px 0;
         }
-        .step-card.unlocked { border-color: var(--primary); background: #ffffff; }
-        .step-card.locked { background: #f8fafc; border-style: dashed; }
+        .timer-digits { font-family: monospace; font-size: 22px; font-weight: 900; color: var(--accent); }
 
-        .btn-override {
+        .nav-controls { display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+        .btn-nav {
             background: #f1f5f9; color: var(--primary); border: 1px solid var(--border-color);
-            padding: 6px 12px; font-size: 11px; font-weight: 700; border-radius: 6px; cursor: pointer; margin-top: 10px;
+            padding: 10px 16px; font-size: 12px; font-weight: 700; border-radius: 8px; cursor: pointer;
         }
+        .btn-nav:disabled { opacity: 0.4; cursor: not-allowed; }
 
         footer { text-align: center; padding: 20px; font-size: 12px; color: var(--text-muted); }
     </style>
@@ -101,34 +96,37 @@
     <main>
         <div class="card">
             <h2>Date Tracking Portal 🔍</h2>
-            <p>Enter your 4-digit Passcode (e.g. NO-4821) to unlock your itinerary:</p>
+            <p>Enter your Passcode to open your interactive date portal:</p>
 
-            <div class="form-group">
-                <input type="text" id="codeInput" placeholder="NO-XXXX">
-            </div>
-            <button class="btn" onclick="startDecryptSequence()">Access Portal</button>
+            <input type="text" id="codeInput" placeholder="e.g. 0808-142">
+            <button class="btn" onclick="startDecryptSequence()">Access Portal →</button>
 
-            <!-- Decryption Scanner Screen -->
+            <!-- Decryption Animation -->
             <div id="scannerBox" class="scanner-box">
-                <div style="font-size: 12px; color: #94a3b8; font-weight: 700; text-transform: uppercase;">DECRYPTING ACCESS PASS</div>
-                <div class="progress-bar-bg">
-                    <div id="progressFill" class="progress-bar-fill"></div>
-                </div>
-                <div id="statusLog" class="status-log">Connecting to secure server...</div>
+                <div style="font-size: 11px; color: #94a3b8; font-weight: 700; letter-spacing: 1px;">DECRYPTING ACCESS PASS</div>
+                <div class="progress-bar-bg"><div id="progressFill" class="progress-bar-fill"></div></div>
+                <div id="statusLog" style="font-family: monospace; font-size: 12px; color: #38bdf8;">Connecting to server...</div>
             </div>
 
-            <!-- Results Section -->
-            <div id="resultsContainer" style="display: none;">
+            <!-- Single Event Stage Viewer -->
+            <div id="resultsContainer" style="display: none; margin-top: 24px;">
                 <div class="portal-header">
                     <h3 id="displayNames" style="font-size: 16px; color: var(--primary);">—</h3>
                     <div id="displayDate" style="font-size: 12px; color: var(--text-muted);">—</div>
-                    <div id="displayStatus" class="status-pill">Planning in Progress</div>
                 </div>
 
-                <div id="itineraryTimeline"></div>
+                <!-- Event Stage Container (Shows 1 Event at a Time) -->
+                <div id="eventStage" class="event-card-stage"></div>
+
+                <!-- Navigation Controls -->
+                <div class="nav-controls">
+                    <button id="prevBtn" class="btn-nav" onclick="changeStep(-1)">← Previous</button>
+                    <span id="stepIndicator" style="font-size: 12px; font-weight: 700; color: var(--text-muted);">Step 1 of 3</span>
+                    <button id="nextBtn" class="btn-nav" onclick="changeStep(1)">Next →</button>
+                </div>
             </div>
-            
-            <a href="index.html" style="display: block; text-align: center; margin-top: 20px; color: var(--text-muted); font-size: 12px; text-decoration: none;">← Return to Home Page</a>
+
+            <a href="index.html" style="display: block; text-align: center; margin-top: 24px; color: var(--text-muted); font-size: 12px; text-decoration: none;">← Return to Main Page</a>
         </div>
     </main>
 
@@ -136,9 +134,12 @@
 
     <script>
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzK5qTseJuvbgz7uOT056mxcE2o-JESYaNkLnEhcASWbCfFkzxJ-SFBcqgxnPk8jW7-/exec";
+        let currentItinerary = [];
+        let currentStepIndex = 0;
         let overriddenSteps = new Set();
-        let fetchedData = null;
+        let timerInterval = null;
 
+        // Auto-load if code parameter exists in URL
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const codeParam = urlParams.get('code');
@@ -148,7 +149,6 @@
             }
         });
 
-        // Fake decryption sequence to create build-up and anticipation
         function startDecryptSequence() {
             const code = document.getElementById('codeInput').value.trim();
             if (!code) return alert('Please enter your passcode.');
@@ -162,82 +162,117 @@
             scannerBox.style.display = "block";
             fill.style.width = "0%";
 
-            // Start API call immediately in background
             const apiPromise = fetch(GOOGLE_SCRIPT_URL + "?code=" + encodeURIComponent(code)).then(res => res.json());
 
-            // Timed progress sequence
-            setTimeout(() => { fill.style.width = "30%"; log.textContent = "Verifying Passcode credentials..."; }, 300);
-            setTimeout(() => { fill.style.width = "65%"; log.textContent = "Syncing Annapolis Merchant Partners..."; }, 1200);
-            setTimeout(() => { fill.style.width = "90%"; log.textContent = "Decrypting time-locked reservations..."; }, 2000);
+            setTimeout(() => { fill.style.width = "35%"; log.textContent = "Verifying Passcode credentials..."; }, 200);
+            setTimeout(() => { fill.style.width = "70%"; log.textContent = "Syncing Merchant Reservations..."; }, 1000);
+            setTimeout(() => { fill.style.width = "95%"; log.textContent = "Decrypting time locks..."; }, 1800);
 
-            Promise.all([apiPromise, new Promise(resolve => setTimeout(resolve, 2600))])
+            Promise.all([apiPromise, new Promise(resolve => setTimeout(resolve, 2200))])
             .then(([data]) => {
                 fill.style.width = "100%";
-                log.textContent = "Access Granted.";
-
                 setTimeout(() => {
                     scannerBox.style.display = "none";
                     if (data.found) {
-                        fetchedData = data;
                         document.getElementById('displayNames').textContent = data.names;
                         document.getElementById('displayDate').textContent = "Scheduled Date: " + data.date;
-                        document.getElementById('displayStatus').textContent = data.status;
-
-                        renderTimeline(data.itinerary);
+                        currentItinerary = data.itinerary || [];
+                        currentStepIndex = 0;
+                        
+                        renderSingleEventStage();
                         resultsContainer.style.display = "block";
                     } else {
                         alert('Passcode not found. Please double-check your code.');
                     }
-                }, 400);
-            })
-            .catch(err => {
-                scannerBox.style.display = "none";
-                alert('Error connecting to system. Please try again.');
+                }, 300);
             });
         }
 
-        function renderTimeline(itinerary) {
-            const container = document.getElementById('itineraryTimeline');
-            container.innerHTML = "";
+        function renderSingleEventStage() {
+            const stage = document.getElementById('eventStage');
+            if (timerInterval) clearInterval(timerInterval);
 
-            if (!itinerary || itinerary.length === 0) {
-                container.innerHTML = "<div style='text-align:center; font-size:13px; color:#64748b; margin-top:20px; padding:16px; background:#f8fafc; border-radius:10px;'>Your custom itinerary is currently being locked in by our team. Check back closer to your date!</div>";
+            if (currentItinerary.length === 0) {
+                stage.innerHTML = "<div style='text-align:center; font-size:13px; color:#64748b;'>Your itinerary is being assembled by our team. Check back closer to date night!</div>";
                 return;
             }
 
+            const step = currentItinerary[currentStepIndex];
             const now = new Date();
             const currentMinutes = now.getHours() * 60 + now.getMinutes();
 
-            itinerary.forEach((step, index) => {
-                const [stepHour, stepMin] = step.time.toString().split(':').map(Number);
-                const stepTotalMinutes = (stepHour * 60) + stepMin;
+            const [stepHour, stepMin] = step.time.toString().split(':').map(Number);
+            const stepTotalMinutes = (stepHour * 60) + stepMin;
 
-                const card = document.createElement('div');
-                const isTimeReached = currentMinutes >= stepTotalMinutes;
-                const isManuallyUnlocked = overriddenSteps.has(index);
+            const isTimeReached = currentMinutes >= stepTotalMinutes;
+            const isUnlocked = isTimeReached || overriddenSteps.has(currentStepIndex);
 
-                if (isTimeReached || isManuallyUnlocked) {
-                    card.className = "step-card unlocked";
-                    card.innerHTML = `
-                        <div style="font-weight: 800; color: var(--primary); font-size: 14px;">🔓 ${step.time} — ${step.title}</div>
-                        <div style="font-size: 14px; font-weight: 700; margin-top: 4px;">📍 ${step.location}</div>
-                        <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">${step.details}</div>
-                    `;
-                } else {
-                    card.className = "step-card locked";
-                    card.innerHTML = `
-                        <div style="font-weight: 700; color: var(--text-muted); font-size: 13px;">🔒 Scheduled Lock: ${step.time}</div>
-                        <div style="font-size: 12px; color: #94a3b8; margin-top: 2px;">Details automatically reveal when time arrives.</div>
-                        <button class="btn-override" onclick="manualUnlock(${index})">⚡ Force Unlock Step Early</button>
-                    `;
-                }
-                container.appendChild(card);
-            });
+            // Update Pagination Indicator & Controls
+            document.getElementById('stepIndicator').textContent = `Step ${currentStepIndex + 1} of ${currentItinerary.length}`;
+            document.getElementById('prevBtn').disabled = currentStepIndex === 0;
+            document.getElementById('nextBtn').disabled = currentStepIndex === currentItinerary.length - 1;
+
+            if (isUnlocked) {
+                stage.innerHTML = `
+                    <div style="font-size: 11px; font-weight: 800; color: #16a34a; text-transform: uppercase; letter-spacing: 0.5px;">UNLOCKED ITEM</div>
+                    <div style="font-size: 18px; font-weight: 800; color: var(--primary); margin-top: 4px;">🔓 ${step.time} — ${step.title}</div>
+                    <div style="font-size: 15px; font-weight: 700; margin-top: 6px; color: var(--accent);">📍 ${step.location}</div>
+                    <div style="font-size: 13px; color: var(--text-muted); margin-top: 8px; line-height: 1.5;">${step.details}</div>
+                `;
+            } else {
+                stage.innerHTML = `
+                    <div style="font-size: 11px; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px;">TIME-LOCKED EVENT</div>
+                    <div style="font-size: 16px; font-weight: 800; color: var(--primary); margin-top: 4px;">🔒 Scheduled Time: ${step.time}</div>
+                    
+                    <div class="countdown-timer-box">
+                        <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Unlocks In</div>
+                        <div id="countdownClock" class="timer-digits">00:00:00</div>
+                    </div>
+
+                    <div style="font-size: 12px; color: var(--text-muted);">Destination details unlock automatically when the scheduled time arrives.</div>
+                    <button style="background:#f1f5f9; border:1px solid #cbd5e1; padding:6px 12px; font-size:11px; font-weight:700; border-radius:6px; cursor:pointer; margin-top:12px;" onclick="manualUnlockCurrent()">⚡ Force Unlock Step Early</button>
+                `;
+
+                startCountdownTimer(stepHour, stepMin);
+            }
         }
 
-        function manualUnlock(index) {
-            overriddenSteps.add(index);
-            if (fetchedData) renderTimeline(fetchedData.itinerary);
+        function changeStep(direction) {
+            currentStepIndex += direction;
+            renderSingleEventStage();
+        }
+
+        function manualUnlockCurrent() {
+            overriddenSteps.add(currentStepIndex);
+            renderSingleEventStage();
+        }
+
+        function startCountdownTimer(targetHour, targetMin) {
+            function updateClock() {
+                const now = new Date();
+                const target = new Date();
+                target.setHours(targetHour, targetMin, 0, 0);
+
+                let diff = target - now;
+                if (diff <= 0) {
+                    renderSingleEventStage();
+                    return;
+                }
+
+                const hrs = Math.floor(diff / (1000 * 60 * 60));
+                const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+                const clockElem = document.getElementById('countdownClock');
+                if (clockElem) {
+                    clockElem.textContent = 
+                        (hrs < 10 ? "0" + hrs : hrs) + ":" + 
+                        (mins < 10 ? "0" + mins : mins) + ":" + 
+                        (secs < 10 ? "0" + secs : secs);
+                }
+            }
+            updateClock();
+            timerInterval = setInterval(updateClock, 1000);
         }
     </script>
 </body>
