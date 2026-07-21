@@ -9,9 +9,7 @@
             --bg-color: #f8f9fc;
             --card-bg: #ffffff;
             --accent-pink: #ff3b70;
-            --accent-hover: #e0285a;
             --accent-purple: #7c3aed;
-            --accent-cyan: #06b6d4;
             --text-main: #0f172a;
             --text-muted: #64748b;
             --border-color: #e2e8f0;
@@ -33,8 +31,7 @@
         }
 
         header { text-align: center; padding: 30px 20px 10px 20px; }
-
-        .logo { font-size: 30px; font-weight: 900; letter-spacing: -0.5px; color: var(--text-main); }
+        .logo { font-size: 30px; font-weight: 900; color: var(--text-main); text-decoration: none; }
         .logo span { background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .tagline { font-size: 13px; color: var(--accent-purple); font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 4px; }
 
@@ -46,9 +43,10 @@
             border-radius: 24px;
             padding: 32px;
             box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+            text-align: center;
         }
 
-        h2 { color: var(--text-main); font-size: 24px; font-weight: 800; margin-bottom: 12px; text-align: center; }
+        h2 { font-size: 24px; font-weight: 800; margin-bottom: 12px; }
         p { color: var(--text-muted); margin-bottom: 20px; font-size: 15px; }
 
         .price-badge {
@@ -59,7 +57,7 @@
             font-size: 18px; font-weight: 900; padding: 6px 20px; border-radius: 50px; margin: 8px 0 20px 0;
         }
 
-        .highlight-box { background: #f0fdf4; border: 1px dashed var(--success-color); padding: 14px; border-radius: 16px; margin-bottom: 24px; text-align: center; }
+        .highlight-box { background: #f0fdf4; border: 1px dashed var(--success-color); padding: 14px; border-radius: 16px; margin-bottom: 24px; }
         .highlight-box p { margin-bottom: 0; color: #166534; font-weight: 700; }
 
         .steps { margin-bottom: 28px; text-align: left; }
@@ -69,23 +67,8 @@
             color: white; font-weight: 900; width: 30px; height: 30px; border-radius: 10px;
             display: flex; align-items: center; justify-content: center; margin-right: 14px; flex-shrink: 0; font-size: 14px;
         }
-        .step-text h4 { color: var(--text-main); font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+        .step-text h4 { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
         .step-text p { font-size: 13px; margin-bottom: 0; color: var(--text-muted); }
-
-        .date-list { margin: 20px 0; display: flex; flex-direction: column; gap: 12px; }
-        .date-item {
-            border: 1px solid var(--border-color); border-radius: 16px; padding: 16px;
-            display: flex; justify-content: space-between; align-items: center; background: var(--card-bg);
-        }
-        .date-info h4 { font-size: 15px; color: var(--text-main); font-weight: 700; }
-        .date-info p { font-size: 13px; margin-bottom: 0; color: var(--text-muted); }
-
-        .status-badge { font-size: 12px; font-weight: 800; padding: 8px 16px; border-radius: 50px; text-transform: uppercase; }
-        .status-soldout { background-color: #f1f5f9; color: #94a3b8; border: 1px solid #e2e8f0; }
-        .status-available {
-            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
-            color: white; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(255, 59, 112, 0.25);
-        }
 
         .form-group { margin-bottom: 20px; text-align: left; }
         label { display: block; margin-bottom: 6px; font-weight: 700; font-size: 12px; color: var(--accent-purple); text-transform: uppercase; }
@@ -93,25 +76,13 @@
             width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border-color);
             background-color: #f8fafc; color: var(--text-main); font-size: 15px; outline: none;
         }
-        input:focus, select:focus { background-color: #ffffff; border-color: var(--accent-pink); }
 
         .btn {
             display: block; width: 100%; background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
             color: white; border: none; padding: 14px; font-size: 16px; font-weight: 800; border-radius: 14px;
-            cursor: pointer; text-align: center; box-shadow: 0 6px 18px rgba(124, 58, 237, 0.2);
+            cursor: pointer; text-align: center; text-decoration: none; box-shadow: 0 6px 18px rgba(124, 58, 237, 0.2);
         }
         .btn-secondary { background: #f1f5f9; color: var(--text-muted); border: 1px solid var(--border-color); margin-top: 12px; box-shadow: none; }
-
-        /* Tracking Result Box */
-        .track-result-box {
-            background: #f8fafc; border: 1px solid var(--border-color); border-radius: 16px; padding: 20px;
-            margin-top: 20px; text-align: left; display: none;
-        }
-        .track-result-box h3 { font-size: 18px; color: var(--accent-purple); margin-bottom: 4px; }
-        .track-status-pill {
-            display: inline-block; background: #e0e7ff; color: #3730a3; font-weight: 800;
-            padding: 6px 14px; border-radius: 20px; font-size: 13px; margin-top: 6px;
-        }
 
         .hidden { display: none !important; }
         footer { text-align: center; padding: 20px; font-size: 12px; color: var(--text-muted); border-top: 1px solid var(--border-color); }
@@ -120,13 +91,13 @@
 <body>
 
     <header>
-        <div class="logo">NightOut<span>Annapolis</span> 🎟️</div>
+        <a href="index.html" class="logo">NightOut<span>Annapolis</span> 🎟️</a>
         <div class="tagline">Surprise Date Night Experiences</div>
     </header>
 
     <main>
-        <!-- VIEW 1: WELCOME SCREEN -->
-        <div id="welcomeView" class="view-card" style="text-align: center;">
+        <!-- WELCOME SCREEN -->
+        <div id="welcomeView" class="view-card">
             <h2>Ditch the Planning. Keep the Romance.</h2>
             <p>We craft completely secret, fully curated evenings out for couples in Downtown Annapolis.</p>
             
@@ -140,68 +111,52 @@
                 <div class="step-item">
                     <div class="step-number">1</div>
                     <div class="step-text">
-                        <h4>Pick Your Friday or Saturday</h4>
-                        <p>Lock in your preferred date for $49.99. We handle all reservations and logistics.</p>
+                        <h4>Pick Your Weekend</h4>
+                        <p>Lock in your preferred date. We handle all reservations and logistics.</p>
                     </div>
                 </div>
                 <div class="step-item">
                     <div class="step-number">2</div>
                     <div class="step-text">
                         <h4>Customize Your Vibe</h4>
-                        <p>Fill out your preferences to receive your unique Date Tracking Code via email.</p>
+                        <p>Fill out your preferences to receive your simple 4-digit Access Pass via email.</p>
                     </div>
                 </div>
                 <div class="step-item">
                     <div class="step-number">3</div>
                     <div class="step-text">
-                        <h4>Show Up & Unlock the Fun</h4>
-                        <p>Track your date status online and reveal each location as your date unfolds!</p>
+                        <h4>Track & Unlock on Date Night</h4>
+                        <p>Use your code on our tracker page to unlock stops as your date unfolds!</p>
                     </div>
                 </div>
             </div>
 
             <button class="btn" onclick="switchView('bookingView')">See Available Dates 🎉</button>
-            <button class="btn btn-secondary" onclick="switchView('trackingView')">🔍 Track Existing Date</button>
+            <a href="tracker.html" class="btn btn-secondary">🔍 Track Existing Date</a>
         </div>
 
-        <!-- VIEW 2: BOOKING SCREEN -->
+        <!-- BOOKING SCREEN -->
         <div id="bookingView" class="view-card hidden">
             <h2>Select Your Weekend</h2>
-            <p style="text-align: center;">Includes pre-booked activity tickets, curated dining reservations with local perks, and surprise dessert vouchers.</p>
+            <p>Includes pre-booked activity tickets, curated dining reservations with perks, and surprise dessert vouchers.</p>
             
-            <div class="date-list">
-                <div class="date-item">
-                    <div class="date-info">
-                        <h4>Friday, August 7</h4>
-                        <p>Couples Surprise Package ($49.99)</p>
+            <div style="margin: 20px 0; display: flex; flex-direction: column; gap: 12px;">
+                <div style="border: 1px solid var(--border-color); border-radius: 16px; padding: 16px; display: flex; justify-content: space-between; align-items: center;">
+                    <div style="text-align: left;">
+                        <h4 style="font-size: 15px;">Saturday, August 8</h4>
+                        <p style="font-size: 13px; color: var(--accent-pink); font-weight: 700; margin: 0;">🔥 Only 2 Slots Left!</p>
                     </div>
-                    <div class="status-badge status-soldout">Sold Out</div>
-                </div>
-
-                <div class="date-item" style="border-color: var(--accent-pink); background: rgba(255, 59, 112, 0.02);">
-                    <div class="date-info">
-                        <h4>Saturday, August 8</h4>
-                        <p style="color: var(--accent-pink); font-weight: 700;">🔥 Only 2 Slots Left! ($49.99)</p>
-                    </div>
-                    <button class="status-badge status-available" onclick="triggerStripeCheckout('Saturday, August 8')">Book ($49.99)</button>
-                </div>
-
-                <div class="date-item">
-                    <div class="date-info">
-                        <h4>Friday, August 14</h4>
-                        <p>Couples Surprise Package ($49.99)</p>
-                    </div>
-                    <button class="status-badge status-available" onclick="triggerStripeCheckout('Friday, August 14')">Book ($49.99)</button>
+                    <button class="btn" style="width: auto; padding: 8px 16px; font-size: 13px;" onclick="triggerCheckout('Saturday, August 8')">Book ($49.99)</button>
                 </div>
             </div>
 
             <button class="btn btn-secondary" onclick="switchView('welcomeView')">← Back to Overview</button>
         </div>
 
-        <!-- VIEW 3: POST-PAYMENT PREFERENCES -->
+        <!-- POST-PAYMENT PREFERENCES -->
         <div id="preferencesView" class="view-card hidden">
             <h2 style="color: var(--accent-purple);">Payment Successful! 🎟️</h2>
-            <p style="text-align: center;">Fill out your preferences below. You'll receive a Tracking Code via email instantly:</p>
+            <p>Fill out your preferences below to generate your 4-digit Access Pass:</p>
             
             <form id="preferencesForm">
                 <div class="form-group">
@@ -223,88 +178,56 @@
                 <div class="form-group">
                     <label for="vibe">5) Date Vibe:</label>
                     <select id="vibe" required>
-                        <option value="" disabled selected>Select a vibe style...</option>
+                        <option value="" disabled selected>Select a vibe...</option>
                         <option value="Waterfront & Seafood">Waterfront & Fresh Seafood</option>
                         <option value="Cozy & Intimate Wine Bar">Cozy & Intimate Wine Bar</option>
                         <option value="Hidden Underground Gastropub">Hidden Underground Gastropub</option>
-                        <option value="Lively Pub & Live Music">Lively Pub & Live Music</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="priceTier">6) Target Dinner Price Range ($ to $$$$):</label>
+                    <label for="priceTier">6) Target Dinner Price Range:</label>
                     <select id="priceTier" required>
                         <option value="" disabled selected>Select dinner price tier...</option>
-                        <option value="$ ($15-25 per person)">$ — Budget Friendly ($15–$25 per entree)</option>
-                        <option value="$$ ($25-40 per person)">$$ — Moderate / Standard ($25–$40 per entree)</option>
-                        <option value="$$$ ($40-65 per person)">$$$ — Upscale Dining ($40–$65 per entree)</option>
+                        <option value="$ ($15-25 per person)">$ — Budget Friendly</option>
+                        <option value="$$ ($25-40 per person)">$$ — Moderate / Standard</option>
+                        <option value="$$$ ($40-65 per person)">$$$ — Upscale Dining</option>
                     </select>
                 </div>
 
-                <button type="submit" class="btn">Lock In My Preferences & Get Code 🔐</button>
+                <button type="submit" class="btn">Lock In Preferences & Get Pass 🔐</button>
             </form>
-        </div>
-
-        <!-- VIEW 4: TRACK DATE STATUS & TIMELINE -->
-        <div id="trackingView" class="view-card hidden">
-            <h2>Track Your Date Status 🔍</h2>
-            <p style="text-align: center;">Enter the 6-digit tracking code emailed to you after checkout (e.g. NO-849201):</p>
-            
-            <div class="form-group">
-                <label for="trackCodeInput">Tracking Code:</label>
-                <input type="text" id="trackCodeInput" placeholder="e.g. NO-123456">
-            </div>
-            <button class="btn" onclick="checkDateStatus()">Check Status</button>
-
-            <div id="trackResultBox" class="track-result-box">
-                <h3 id="trackNames">John & Jane</h3>
-                <p id="trackDate" style="font-size: 14px; margin-bottom: 6px;">Date: Saturday, August 8</p>
-                <div><strong>Current Status:</strong></div>
-                <div id="trackStatusPill" class="track-status-pill">Planning in Progress 🎨</div>
-
-                <!-- Timed Itinerary Elements Inject Here -->
-                <div id="itineraryTimelineContainer" style="margin-top: 15px;"></div>
-            </div>
-
-            <button class="btn btn-secondary" onclick="switchView('welcomeView')">← Back to Overview</button>
         </div>
     </main>
 
-    <footer>
-        &copy; 2026 NightOut Annapolis. Made by locals, supporting local spots.
-    </footer>
+    <footer>&copy; 2026 NightOut Annapolis. Made by locals, supporting local spots.</footer>
 
     <script>
         const STRIPE_LINK = "https://buy.stripe.com/test_6oU8wP7Hr5ese13cwVbII00";
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzK5qTseJuvbgz7uOT056mxcE2o-JESYaNkLnEhcASWbCfFkzxJ-SFBcqgxnPk8jW7-/exec";
 
-        function switchView(viewId) {
+        function switchView(id) {
             document.getElementById('welcomeView').classList.add('hidden');
             document.getElementById('bookingView').classList.add('hidden');
             document.getElementById('preferencesView').classList.add('hidden');
-            document.getElementById('trackingView').classList.add('hidden');
-            
-            document.getElementById(viewId).classList.remove('hidden');
-            window.scrollTo(0, 0);
+            document.getElementById(id).classList.remove('hidden');
         }
 
-        function triggerStripeCheckout(selectedDate) {
-            localStorage.setItem('chosenDate', selectedDate);
+        function triggerCheckout(date) {
+            localStorage.setItem('chosenDate', date);
             window.location.href = STRIPE_LINK;
         }
 
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
-            if (window.location.hash === '#success' || urlParams.get('session_id') || urlParams.get('success') === 'true') {
+            if (window.location.hash === '#success' || urlParams.get('success') === 'true') {
                 switchView('preferencesView');
             }
         });
 
-        // Submit preferences and request tracking code
         document.getElementById('preferencesForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            
             const submitBtn = e.target.querySelector('button');
-            submitBtn.textContent = "Saving & Emailing Code...";
+            submitBtn.textContent = "Saving & Emailing Pass...";
             submitBtn.disabled = true;
 
             const payload = {
@@ -324,84 +247,10 @@
                 body: JSON.stringify(payload)
             })
             .then(() => {
-                alert('Preferences locked in! We have emailed your unique Tracking Code to ' + payload.email);
-                localStorage.removeItem('chosenDate');
-                switchView('trackingView');
-            })
-            .catch(err => {
-                console.error(err);
-                alert('Error saving preferences. Please try again.');
-                submitBtn.textContent = "Lock In My Preferences & Get Code 🔐";
-                submitBtn.disabled = false;
+                alert('Preferences locked in! Check your email for your confidential Access Pass.');
+                window.location.href = "tracker.html";
             });
         });
-
-        // Query date status & check unlock times from Google Sheet
-        function checkDateStatus() {
-            const code = document.getElementById('trackCodeInput').value.trim();
-            if (!code) {
-                alert('Please enter a tracking code.');
-                return;
-            }
-
-            const resultBox = document.getElementById('trackResultBox');
-            resultBox.style.display = "none";
-
-            fetch(GOOGLE_SCRIPT_URL + "?code=" + encodeURIComponent(code))
-            .then(res => res.json())
-            .then(data => {
-                if (data.found) {
-                    document.getElementById('trackNames').textContent = data.names;
-                    document.getElementById('trackDate').textContent = "Scheduled Date: " + data.date;
-                    document.getElementById('trackStatusPill').textContent = data.status;
-                    
-                    const container = document.getElementById('itineraryTimelineContainer');
-                    container.innerHTML = ""; // Clear existing elements
-
-                    if (data.itinerary && data.itinerary.length > 0) {
-                        const now = new Date();
-                        const currentMinutes = now.getHours() * 60 + now.getMinutes();
-
-                        data.itinerary.forEach((step, index) => {
-                            // Parse HH:MM into total minutes for time comparison
-                            const [stepHour, stepMin] = step.time.toString().split(':').map(Number);
-                            const stepTotalMinutes = (stepHour * 60) + stepMin;
-
-                            const itemDiv = document.createElement('div');
-                            itemDiv.style.cssText = "padding: 12px; margin-top: 10px; border-radius: 12px; border: 1px solid #e2e8f0;";
-
-                            // Reveal item if current time >= scheduled step time
-                            if (currentMinutes >= stepTotalMinutes) {
-                                itemDiv.style.backgroundColor = "#ffffff";
-                                itemDiv.style.borderColor = "#ff3b70";
-                                itemDiv.innerHTML = `
-                                    <div style="font-weight: 800; color: #ff3b70;">🔓 ${step.time} — ${step.title}</div>
-                                    <div style="font-size: 14px; font-weight: 700; color: #0f172a; margin-top: 2px;">📍 ${step.location}</div>
-                                    <div style="font-size: 13px; color: #64748b; margin-top: 4px;">${step.details}</div>
-                                `;
-                            } else {
-                                // Keep locked if time has not arrived yet
-                                itemDiv.style.backgroundColor = "#f1f5f9";
-                                itemDiv.style.borderColor = "#cbd5e1";
-                                itemDiv.innerHTML = `
-                                    <div style="font-weight: 700; color: #64748b;">🔒 Unlocks at ${step.time}</div>
-                                    <div style="font-size: 13px; color: #94a3b8;">Destination details for Step ${index + 1} will reveal when time arrives.</div>
-                                `;
-                            }
-                            container.appendChild(itemDiv);
-                        });
-                    }
-
-                    resultBox.style.display = "block";
-                } else {
-                    alert('Tracking code not found. Please double-check your code.');
-                }
-            })
-            .catch(err => {
-                console.error(err);
-                alert('Unable to fetch status. Please check your tracking code.');
-            });
-        }
     </script>
 </body>
 </html>
