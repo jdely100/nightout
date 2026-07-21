@@ -3,145 +3,465 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NightOut Annapolis | Curated Mystery Dates</title>
+    <title>NightOut Annapolis — Fully Curated Surprises for Couples</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #0d0b18;
-            color: #f3f4f6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+        :root {
+            --bg-color: #0b0719;
+            --card-bg: rgba(26, 18, 51, 0.85);
+            --accent-pink: #ff2a8d;
+            --accent-hover: #f01477;
+            --accent-cyan: #00f2fe;
+            --accent-yellow: #ffb703;
+            --text-main: #ffffff;
+            --text-muted: #b3aed0;
+            --border-color: #382c6c;
+            --success-color: #00e676;
         }
-        .card {
-            background: #16122b;
-            border: 1px solid #2e2755;
-            border-radius: 16px;
-            max-width: 480px;
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(255, 42, 141, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 242, 254, 0.12) 0%, transparent 40%);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px 10px 20px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            text-shadow: 0 0 20px rgba(255, 42, 141, 0.3);
+        }
+
+        .logo span {
+            color: var(--accent-pink);
+            background: linear-gradient(135deg, var(--accent-pink), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        main {
+            flex: 1;
+            max-width: 580px;
             width: 100%;
+            margin: 0 auto;
+            padding: 20px 20px 60px 20px;
+        }
+
+        .view-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
             padding: 32px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        h2 {
+            color: var(--text-main);
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 12px;
             text-align: center;
         }
-        .badge {
-            background: rgba(255, 42, 116, 0.15);
-            color: #ff2a74;
-            padding: 6px 12px;
-            font-size: 12px;
-            font-weight: 700;
-            border-radius: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        /* Playful Highlights */
+        .price-badge {
             display: inline-block;
-            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--accent-pink), #8a2be2);
+            color: white;
+            font-size: 20px;
+            font-weight: 900;
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin: 10px 0 20px 0;
+            box-shadow: 0 4px 15px rgba(255, 42, 141, 0.4);
         }
-        h1 { font-size: 28px; margin-bottom: 8px; color: #ffffff; }
-        .subtitle { color: #9ca3af; font-size: 15px; margin-bottom: 24px; }
-        .details-box {
-            background: #0d0b18;
-            border-radius: 8px;
+
+        .highlight-box {
+            background: rgba(0, 242, 254, 0.08);
+            border: 1px dashed var(--accent-cyan);
             padding: 16px;
-            text-align: left;
-            margin-bottom: 24px;
-            font-size: 14px;
-            line-height: 1.6;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            text-align: center;
         }
-        .details-box li { margin-left: 20px; color: #d1d5db; }
-        .price-tag {
-            font-size: 32px;
-            font-weight: 800;
-            color: #ff2a74;
+
+        .highlight-box p {
+            margin-bottom: 0;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .steps {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
             margin-bottom: 20px;
         }
-        .price-tag span { font-size: 14px; color: #9ca3af; font-weight: normal; }
-        label { display: block; text-align: left; font-size: 13px; font-weight: 600; margin-bottom: 8px; color: #d1d5db; }
-        select {
-            width: 100%;
-            padding: 12px;
-            background: #0d0b18;
-            border: 1px solid #2e2755;
-            color: white;
-            border-radius: 8px;
+
+        .step-number {
+            background: linear-gradient(135deg, var(--accent-pink), var(--accent-cyan));
+            color: #0b0719;
+            font-weight: 900;
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
             font-size: 15px;
-            margin-bottom: 24px;
-            outline: none;
+            transform: rotate(-3deg);
         }
-        select:focus { border-color: #ff2a74; }
-        .btn {
-            width: 100%;
-            background: #ff2a74;
+
+        .step-text h4 {
+            color: var(--text-main);
+            font-size: 16px;
+            margin-bottom: 2px;
+        }
+
+        .step-text p {
+            font-size: 13px;
+            margin-bottom: 0;
+        }
+
+        /* Date Selection List */
+        .date-list {
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .date-item {
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            transition: transform 0.2s;
+        }
+
+        .date-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .date-info h4 {
+            font-size: 16px;
+            color: var(--text-main);
+        }
+
+        .date-info p {
+            font-size: 13px;
+            margin-bottom: 0;
+            color: var(--text-muted);
+        }
+
+        .status-badge {
+            font-size: 12px;
+            font-weight: 800;
+            padding: 8px 16px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-soldout {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #666;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .status-available {
+            background: linear-gradient(135deg, var(--accent-pink), var(--accent-hover));
             color: white;
             border: none;
-            padding: 14px;
-            font-size: 16px;
-            font-weight: 700;
-            border-radius: 8px;
             cursor: pointer;
-            transition: background 0.2s;
+            box-shadow: 0 4px 12px rgba(255, 42, 141, 0.3);
+            transition: all 0.2s ease;
         }
-        .btn:hover { background: #e01f61; }
+
+        .status-available:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 18px rgba(255, 42, 141, 0.5);
+        }
+
+        /* Preference Form */
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background-color: #0b0719;
+            color: white;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus, select:focus {
+            border-color: var(--accent-pink);
+        }
+
+        /* Buttons */
+        .btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent-pink), #8a2be2);
+            color: white;
+            border: none;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 800;
+            border-radius: 14px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+            box-shadow: 0 8px 20px rgba(255, 42, 141, 0.3);
+        }
+
+        .btn:hover {
+            opacity: 0.95;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+            margin-top: 15px;
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px;
+            font-size: 12px;
+            color: #554e75;
+            border-top: 1px solid var(--border-color);
+        }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <span class="badge">Downtown Annapolis</span>
-        <h1>NightOut Annapolis</h1>
-        <p class="subtitle">A fully curated, surprise night out for two.</p>
+    <header>
+        <div class="logo">NightOut<span>Annapolis</span> 🎟️</div>
+        <div class="tagline">Surprise Date Night Experiences</div>
+    </header>
 
-        <div class="price-tag">$49.99 <span>/ couple</span></div>
+    <main>
+        <!-- VIEW 1: WELCOME SCREEN -->
+        <div id="welcomeView" class="view-card" style="text-align: center;">
+            <h2>Ditch the Planning. Keep the Romance.</h2>
+            <p>We craft completely secret, fully curated evenings out for couples in Downtown Annapolis.</p>
+            
+            <div class="price-badge">$49.99 / Couple Package</div>
 
-        <div class="details-box">
-            <p style="margin-bottom: 8px;"><strong>What's included in your curation:</strong></p>
-            <ul>
-                <li>Hand-picked activity & reserved dinner spot</li>
-                <li>Exclusive local perks & surprise dessert voucher</li>
-                <li>Custom digital envelope sent before your date</li>
-            </ul>
+            <div class="highlight-box">
+                <p>✨ Everything is an absolute surprise until your date begins!</p>
+            </div>
+
+            <div class="steps">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-text">
+                        <h4>Pick Your Friday or Saturday</h4>
+                        <p>Lock in your preferred date for $49.99. We handle all reservations, bookings, and logistics.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-text">
+                        <h4>Customize Your Vibe</h4>
+                        <p>Tell us your dietary needs and dining style preferences so we can tailor the surprise to you.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-text">
+                        <h4>Show Up & Unlock the Fun</h4>
+                        <p>Receive your digital envelope with parking, dress code, activity passes, and dinner vouchers!</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn" onclick="switchView('bookingView')">See Available Dates 🎉</button>
         </div>
 
-        <form id="dateForm">
-            <label for="dateSelect">Choose Your Weekend Date:</label>
-            <select id="dateSelect" required>
-                <option value="" disabled selected>Select an upcoming date...</option>
-            </select>
+        <!-- VIEW 2: BOOKING SCREEN -->
+        <div id="bookingView" class="view-card hidden">
+            <h2>Select Your Weekend</h2>
+            <p style="text-align: center;">Includes pre-booked activity tickets, curated dining reservations with local perks, and surprise dessert vouchers.</p>
+            
+            <div class="date-list">
+                <!-- Sold Out Date -->
+                <div class="date-item">
+                    <div class="date-info">
+                        <h4>Friday, August 7</h4>
+                        <p>Couples Surprise Package ($49.99)</p>
+                    </div>
+                    <div class="status-badge status-soldout">Sold Out</div>
+                </div>
 
-            <button type="submit" class="btn">Continue to Preferences →</button>
-        </form>
-    </div>
+                <!-- AVAILABLE DATE -->
+                <div class="date-item" style="border-color: var(--accent-pink); background: rgba(255, 42, 141, 0.05);">
+                    <div class="date-info">
+                        <h4>Saturday, August 8</h4>
+                        <p style="color: var(--accent-cyan); font-weight: bold;">🔥 Only 2 Slots Left! ($49.99)</p>
+                    </div>
+                    <button class="status-badge status-available" onclick="triggerStripeCheckout('Saturday, August 8')">Book ($49.99)</button>
+                </div>
+
+                <!-- AVAILABLE DATE -->
+                <div class="date-item" style="border-color: var(--border-color);">
+                    <div class="date-info">
+                        <h4>Friday, August 14</h4>
+                        <p>Couples Surprise Package ($49.99)</p>
+                    </div>
+                    <button class="status-badge status-available" onclick="triggerStripeCheckout('Friday, August 14')">Book ($49.99)</button>
+                </div>
+
+                <!-- Sold Out Date -->
+                <div class="date-item">
+                    <div class="date-info">
+                        <h4>Saturday, August 15</h4>
+                        <p>Couples Surprise Package ($49.99)</p>
+                    </div>
+                    <div class="status-badge status-soldout">Sold Out</div>
+                </div>
+            </div>
+
+            <button class="btn btn-secondary" onclick="switchView('welcomeView')">← Back to Overview</button>
+        </div>
+
+        <!-- VIEW 3: POST-PAYMENT PREFERENCES -->
+        <div id="preferencesView" class="view-card hidden">
+            <h2 style="color: var(--accent-cyan);">Payment Successful! 🎟️</h2>
+            <p style="text-align: center;">Let's customize your surprise. Tell us a bit about what you both like:</p>
+            
+            <form id="preferencesForm">
+                <div class="form-group">
+                    <label for="names">Both of your full names:</label>
+                    <input type="text" id="names" placeholder="e.g. John and Jane Doe" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="diet">Food allergies or dietary restrictions?</label>
+                    <input type="text" id="diet" placeholder="e.g. None, Vegetarian, Gluten-Free" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="vibe">Preferred dinner atmosphere:</label>
+                    <select id="vibe" required>
+                        <option value="" disabled selected>Select a vibe...</option>
+                        <option value="Waterfront & Seafood">Waterfront & Fresh Seafood</option>
+                        <option value="Cozy Wine Bar">Cozy & Intimate Wine Bar</option>
+                        <option value="Hidden Gastropub">Hidden Underground Gastropub</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn">Lock In My Preferences 🔐</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 NightOut Annapolis. Made by locals, supporting local spots.
+    </footer>
 
     <script>
-        // Automatically populate the select dropdown with the next 4 Fridays and Saturdays
-        const select = document.getElementById('dateSelect');
-        const today = new Date();
-        let optionsCount = 0;
-        
-        for (let i = 0; i < 30 && optionsCount < 8; i++) {
-            let nextDate = new Date();
-            nextDate.setDate(today.getDate() + i);
-            let dayOfWeek = nextDate.getDay();
+        // Replace with your Stripe payment link
+        const STRIPE_LINK = "https://buy.stripe.com/test_6oU8wP7Hr5ese13cwVbII00";
+
+        function switchView(viewId) {
+            document.getElementById('welcomeView').classList.add('hidden');
+            document.getElementById('bookingView').classList.add('hidden');
+            document.getElementById('preferencesView').classList.add('hidden');
             
-            // 5 = Friday, 6 = Saturday
-            if (dayOfWeek === 5 || dayOfWeek === 6) {
-                let options = { weekday: 'long', month: 'short', day: 'numeric' };
-                let dateString = nextDate.toLocaleDateString('en-US', options);
-                let opt = document.createElement('option');
-                opt.value = dateString;
-                opt.innerHTML = dateString;
-                select.appendChild(opt);
-                optionsCount++;
-            }
+            document.getElementById(viewId).classList.remove('hidden');
+            window.scrollTo(0, 0);
         }
 
-        // Save selected date to localStorage and move to questions page
-        document.getElementById('dateForm').addEventListener('submit', (e) => {
+        function triggerStripeCheckout(selectedDate) {
+            localStorage.setItem('chosenDate', selectedDate);
+            window.location.href = STRIPE_LINK;
+        }
+
+        // Detect Stripe success query params
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (window.location.hash === '#success' || urlParams.get('session_id') || urlParams.get('success') === 'true') {
+                switchView('preferencesView');
+            }
+        });
+
+        document.getElementById('preferencesForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            const selectedDate = select.value;
-            localStorage.setItem('selectedDate', selectedDate);
-            window.location.href = 'questions.html';
+            alert('Preferences locked in! Your surprise itinerary details will arrive via email 24 hours before your date.');
+            window.location.href = window.location.pathname;
         });
     </script>
 </body>
