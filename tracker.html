@@ -6,10 +6,10 @@
     <title>Date Portal — NightOut Annapolis</title>
     <style>
         :root {
-            --bg-color: #f8f9fc;
+            --bg-color: #f8fafc;
             --card-bg: #ffffff;
-            --accent-pink: #ff3b70;
-            --accent-purple: #7c3aed;
+            --primary: #0f172a;
+            --accent: #ff5252;
             --text-main: #0f172a;
             --text-muted: #64748b;
             --border-color: #e2e8f0;
@@ -24,52 +24,70 @@
         }
 
         header { text-align: center; padding: 30px 20px 10px 20px; }
-        .logo { font-size: 28px; font-weight: 900; color: var(--text-main); text-decoration: none; }
-        .logo span { background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .logo { font-size: 26px; font-weight: 900; color: var(--primary); text-decoration: none; }
+        .logo span { color: var(--accent); }
 
-        main { flex: 1; max-width: 580px; width: 100%; margin: 0 auto; padding: 20px 20px 60px 20px; }
+        main { flex: 1; max-width: 540px; width: 100%; margin: 0 auto; padding: 20px 20px 60px 20px; }
 
         .card {
             background-color: var(--card-bg); border: 1px solid var(--border-color);
-            border-radius: 24px; padding: 32px; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+            border-radius: 16px; padding: 28px; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
         }
 
-        h2 { font-size: 22px; font-weight: 800; text-align: center; margin-bottom: 8px; }
-        p { color: var(--text-muted); font-size: 14px; text-align: center; margin-bottom: 20px; }
+        h2 { font-size: 20px; font-weight: 800; text-align: center; margin-bottom: 6px; color: var(--primary); }
+        p { color: var(--text-muted); font-size: 13px; text-align: center; margin-bottom: 20px; }
 
         .form-group { margin-bottom: 16px; }
-        label { display: block; font-weight: 700; font-size: 12px; color: var(--accent-purple); text-transform: uppercase; margin-bottom: 6px; }
         input[type="text"] {
-            width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border-color);
-            background: #f8fafc; font-size: 16px; font-weight: 700; text-align: center; letter-spacing: 1px;
+            width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border-color);
+            background: #ffffff; font-size: 16px; font-weight: 700; text-align: center; letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .btn {
-            display: block; width: 100%; background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
-            color: white; border: none; padding: 14px; font-size: 15px; font-weight: 800; border-radius: 12px;
+            display: block; width: 100%; background-color: var(--primary);
+            color: white; border: none; padding: 12px; font-size: 14px; font-weight: 700; border-radius: 10px;
             cursor: pointer; text-align: center; text-decoration: none;
         }
-        
-        .btn-override {
-            background: #f1f5f9; color: var(--accent-purple); border: 1px solid var(--border-color);
-            padding: 6px 12px; font-size: 12px; font-weight: 700; border-radius: 8px; cursor: pointer; margin-top: 8px;
+
+        /* Scanning / Decrypting Animation Screens */
+        .scanner-box {
+            background: #0f172a; color: #ffffff; border-radius: 12px; padding: 24px;
+            text-align: center; margin-top: 20px; display: none;
         }
 
+        .progress-bar-bg {
+            background: #1e293b; border-radius: 20px; height: 8px; width: 100%; margin: 16px 0; overflow: hidden;
+        }
+        .progress-bar-fill {
+            background: #ff5252; height: 100%; width: 0%; transition: width 0.3s ease;
+        }
+
+        .status-log {
+            font-family: monospace; font-size: 12px; color: #38bdf8; min-height: 20px;
+        }
+
+        /* Results Display */
         .portal-header {
-            background: #f8fafc; border: 1px solid var(--border-color); border-radius: 16px;
-            padding: 16px; text-align: center; margin-bottom: 20px;
+            background: #f8fafc; border: 1px solid var(--border-color); border-radius: 12px;
+            padding: 16px; text-align: center; margin-top: 20px;
         }
 
         .status-pill {
-            display: inline-block; background: #e0e7ff; color: #3730a3; font-weight: 800;
-            padding: 4px 12px; border-radius: 20px; font-size: 12px; margin-top: 6px;
+            display: inline-block; background: #e2e8f0; color: var(--primary); font-weight: 700;
+            padding: 4px 12px; border-radius: 20px; font-size: 11px; margin-top: 6px; text-transform: uppercase;
         }
 
         .step-card {
-            border: 1px solid var(--border-color); border-radius: 16px; padding: 16px; margin-top: 12px; transition: all 0.2s;
+            border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; margin-top: 12px;
         }
-        .step-card.unlocked { border-color: var(--accent-pink); background: #ffffff; }
+        .step-card.unlocked { border-color: var(--primary); background: #ffffff; }
         .step-card.locked { background: #f8fafc; border-style: dashed; }
+
+        .btn-override {
+            background: #f1f5f9; color: var(--primary); border: 1px solid var(--border-color);
+            padding: 6px 12px; font-size: 11px; font-weight: 700; border-radius: 6px; cursor: pointer; margin-top: 10px;
+        }
 
         footer { text-align: center; padding: 20px; font-size: 12px; color: var(--text-muted); }
     </style>
@@ -77,31 +95,40 @@
 <body>
 
     <header>
-        <a href="index.html" class="logo">NightOut<span>Annapolis</span> 🎟️</a>
+        <a href="index.html" class="logo">NightOut<span>Annapolis</span></a>
     </header>
 
     <main>
         <div class="card">
             <h2>Date Tracking Portal 🔍</h2>
-            <p>Enter your 4-digit Access Pass (e.g. NO-4821) to access your itinerary:</p>
+            <p>Enter your 4-digit Passcode (e.g. NO-4821) to unlock your itinerary:</p>
 
             <div class="form-group">
                 <input type="text" id="codeInput" placeholder="NO-XXXX">
             </div>
-            <button class="btn" onclick="fetchDateDetails()">Access Portal</button>
+            <button class="btn" onclick="startDecryptSequence()">Access Portal</button>
+
+            <!-- Decryption Scanner Screen -->
+            <div id="scannerBox" class="scanner-box">
+                <div style="font-size: 12px; color: #94a3b8; font-weight: 700; text-transform: uppercase;">DECRYPTING ACCESS PASS</div>
+                <div class="progress-bar-bg">
+                    <div id="progressFill" class="progress-bar-fill"></div>
+                </div>
+                <div id="statusLog" class="status-log">Connecting to secure server...</div>
+            </div>
 
             <!-- Results Section -->
-            <div id="resultsContainer" style="display: none; margin-top: 24px;">
+            <div id="resultsContainer" style="display: none;">
                 <div class="portal-header">
-                    <h3 id="displayNames" style="font-size: 18px; color: var(--accent-purple);">—</h3>
-                    <div id="displayDate" style="font-size: 13px; color: var(--text-muted);">—</div>
+                    <h3 id="displayNames" style="font-size: 16px; color: var(--primary);">—</h3>
+                    <div id="displayDate" style="font-size: 12px; color: var(--text-muted);">—</div>
                     <div id="displayStatus" class="status-pill">Planning in Progress</div>
                 </div>
 
                 <div id="itineraryTimeline"></div>
             </div>
             
-            <a href="index.html" style="display: block; text-align: center; margin-top: 20px; color: var(--text-muted); font-size: 13px; text-decoration: none;">← Return to Main Page</a>
+            <a href="index.html" style="display: block; text-align: center; margin-top: 20px; color: var(--text-muted); font-size: 12px; text-decoration: none;">← Return to Home Page</a>
         </div>
     </main>
 
@@ -109,37 +136,63 @@
 
     <script>
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzK5qTseJuvbgz7uOT056mxcE2o-JESYaNkLnEhcASWbCfFkzxJ-SFBcqgxnPk8jW7-/exec";
-        
-        // Stores manually unlocked step indices
         let overriddenSteps = new Set();
+        let fetchedData = null;
 
-        // Check URL parameter automatically on load (e.g., tracker.html?code=NO-4821)
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const codeParam = urlParams.get('code');
             if (codeParam) {
                 document.getElementById('codeInput').value = codeParam;
-                fetchDateDetails();
+                startDecryptSequence();
             }
         });
 
-        function fetchDateDetails() {
+        // Fake decryption sequence to create build-up and anticipation
+        function startDecryptSequence() {
             const code = document.getElementById('codeInput').value.trim();
-            if (!code) return alert('Please enter your Access Pass.');
+            if (!code) return alert('Please enter your passcode.');
 
-            fetch(GOOGLE_SCRIPT_URL + "?code=" + encodeURIComponent(code))
-            .then(res => res.json())
-            .then(data => {
-                if (data.found) {
-                    document.getElementById('displayNames').textContent = data.names;
-                    document.getElementById('displayDate').textContent = "Scheduled Date: " + data.date;
-                    document.getElementById('displayStatus').textContent = data.status;
+            const scannerBox = document.getElementById('scannerBox');
+            const resultsContainer = document.getElementById('resultsContainer');
+            const fill = document.getElementById('progressFill');
+            const log = document.getElementById('statusLog');
 
-                    renderTimeline(data.itinerary);
-                    document.getElementById('resultsContainer').style.display = "block";
-                } else {
-                    alert('Access Pass not found. Please double-check your code.');
-                }
+            resultsContainer.style.display = "none";
+            scannerBox.style.display = "block";
+            fill.style.width = "0%";
+
+            // Start API call immediately in background
+            const apiPromise = fetch(GOOGLE_SCRIPT_URL + "?code=" + encodeURIComponent(code)).then(res => res.json());
+
+            // Timed progress sequence
+            setTimeout(() => { fill.style.width = "30%"; log.textContent = "Verifying Passcode credentials..."; }, 300);
+            setTimeout(() => { fill.style.width = "65%"; log.textContent = "Syncing Annapolis Merchant Partners..."; }, 1200);
+            setTimeout(() => { fill.style.width = "90%"; log.textContent = "Decrypting time-locked reservations..."; }, 2000);
+
+            Promise.all([apiPromise, new Promise(resolve => setTimeout(resolve, 2600))])
+            .then(([data]) => {
+                fill.style.width = "100%";
+                log.textContent = "Access Granted.";
+
+                setTimeout(() => {
+                    scannerBox.style.display = "none";
+                    if (data.found) {
+                        fetchedData = data;
+                        document.getElementById('displayNames').textContent = data.names;
+                        document.getElementById('displayDate').textContent = "Scheduled Date: " + data.date;
+                        document.getElementById('displayStatus').textContent = data.status;
+
+                        renderTimeline(data.itinerary);
+                        resultsContainer.style.display = "block";
+                    } else {
+                        alert('Passcode not found. Please double-check your code.');
+                    }
+                }, 400);
+            })
+            .catch(err => {
+                scannerBox.style.display = "none";
+                alert('Error connecting to system. Please try again.');
             });
         }
 
@@ -148,7 +201,7 @@
             container.innerHTML = "";
 
             if (!itinerary || itinerary.length === 0) {
-                container.innerHTML = "<div style='text-align:center; font-size:13px; color:#94a3b8; margin-top:15px;'>Your custom itinerary is being assembled by our local team! Check back soon.</div>";
+                container.innerHTML = "<div style='text-align:center; font-size:13px; color:#64748b; margin-top:20px; padding:16px; background:#f8fafc; border-radius:10px;'>Your custom itinerary is currently being locked in by our team. Check back closer to your date!</div>";
                 return;
             }
 
@@ -166,15 +219,15 @@
                 if (isTimeReached || isManuallyUnlocked) {
                     card.className = "step-card unlocked";
                     card.innerHTML = `
-                        <div style="font-weight: 800; color: var(--accent-pink);">🔓 ${step.time} — ${step.title}</div>
-                        <div style="font-size: 14px; font-weight: 700; margin-top: 2px;">📍 ${step.location}</div>
+                        <div style="font-weight: 800; color: var(--primary); font-size: 14px;">🔓 ${step.time} — ${step.title}</div>
+                        <div style="font-size: 14px; font-weight: 700; margin-top: 4px;">📍 ${step.location}</div>
                         <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">${step.details}</div>
                     `;
                 } else {
                     card.className = "step-card locked";
                     card.innerHTML = `
-                        <div style="font-weight: 700; color: var(--text-muted);">🔒 Scheduled for ${step.time}</div>
-                        <div style="font-size: 13px; color: #94a3b8; margin-top: 2px;">Location details hidden until time arrives.</div>
+                        <div style="font-weight: 700; color: var(--text-muted); font-size: 13px;">🔒 Scheduled Lock: ${step.time}</div>
+                        <div style="font-size: 12px; color: #94a3b8; margin-top: 2px;">Details automatically reveal when time arrives.</div>
                         <button class="btn-override" onclick="manualUnlock(${index})">⚡ Force Unlock Step Early</button>
                     `;
                 }
@@ -184,7 +237,7 @@
 
         function manualUnlock(index) {
             overriddenSteps.add(index);
-            fetchDateDetails(); // Re-render step list
+            if (fetchedData) renderTimeline(fetchedData.itinerary);
         }
     </script>
 </body>
