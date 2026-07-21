@@ -5,71 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select Date & Time — NightOut Annapolis</title>
     <style>
-        :root {
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --primary: #0f172a;
-            --accent: #ff5252;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-        }
-
+        :root { --bg-color: #f8fafc; --card-bg: #ffffff; --primary: #0f172a; --accent: #ff5252; --text-muted: #64748b; --border-color: #e2e8f0; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-
-        body { background-color: var(--bg-color); color: var(--text-main); display: flex; flex-direction: column; min-height: 100vh; }
-
-        header {
-            background: #ffffff; border-bottom: 1px solid var(--border-color);
-            padding: 16px 24px; text-align: center;
-        }
+        body { background-color: var(--bg-color); color: var(--primary); display: flex; flex-direction: column; min-height: 100vh; }
+        header { background: #ffffff; border-bottom: 1px solid var(--border-color); padding: 16px 24px; text-align: center; }
         .logo { font-size: 24px; font-weight: 900; color: var(--primary); text-decoration: none; }
         .logo span { color: var(--accent); }
-
         main { flex: 1; max-width: 640px; width: 100%; margin: 30px auto; padding: 0 20px; }
-
-        .card {
-            background-color: var(--card-bg); border: 1px solid var(--border-color);
-            border-radius: 20px; padding: 32px; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
-        }
-
-        h2 { font-size: 22px; font-weight: 800; text-align: center; margin-bottom: 6px; color: var(--primary); }
+        .card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 32px; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04); }
+        h2 { font-size: 22px; font-weight: 800; text-align: center; margin-bottom: 6px; }
         p { color: var(--text-muted); font-size: 14px; text-align: center; margin-bottom: 28px; }
-
-        .date-group {
-            border: 1px solid var(--border-color); border-radius: 16px; padding: 20px;
-            margin-bottom: 24px; background: #ffffff;
-        }
-        .date-title { font-size: 17px; font-weight: 800; color: var(--primary); margin-bottom: 4px; }
-        .date-subtitle { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
-
-        .time-slots-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
-
-        .time-slot {
-            border: 1px solid var(--border-color); border-radius: 10px; padding: 12px 10px;
-            text-align: center; transition: all 0.2s; background: #ffffff;
-        }
-
-        .time-slot.available {
-            border-color: var(--primary); cursor: pointer;
-        }
-        .time-slot.available:hover {
-            background: #0f172a; color: #ffffff; transform: translateY(-2px);
-        }
+        
+        .date-group { border: 1px solid var(--border-color); border-radius: 16px; padding: 20px; margin-bottom: 20px; background: #ffffff; }
+        .date-title { font-size: 16px; font-weight: 800; color: var(--primary); margin-bottom: 12px; }
+        
+        .time-slots-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
+        .time-slot { border: 1px solid var(--border-color); border-radius: 10px; padding: 12px 10px; text-align: center; background: #ffffff; }
+        .time-slot.available { border-color: var(--primary); cursor: pointer; transition: 0.2s; }
+        .time-slot.available:hover { background: var(--primary); color: #ffffff; }
         .time-slot.available:hover .time-sub { color: #cbd5e1; }
-
-        .time-slot.soldout {
-            background: #f1f5f9; border-color: #e2e8f0; color: #94a3b8; cursor: not-allowed; opacity: 0.75;
-        }
-
-        .time-text { font-size: 15px; font-weight: 800; }
+        .time-slot.soldout { background: #f1f5f9; border-color: #e2e8f0; color: #94a3b8; cursor: not-allowed; opacity: 0.75; }
+        
+        .time-text { font-size: 14px; font-weight: 800; }
         .time-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
-
-        .soldout-badge {
-            display: inline-block; background: #e2e8f0; color: #64748b; font-size: 10px;
-            font-weight: 800; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; margin-top: 4px;
-        }
-
+        .soldout-badge { display: inline-block; background: #e2e8f0; color: #64748b; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; margin-top: 4px; }
         footer { text-align: center; padding: 20px; font-size: 12px; color: var(--text-muted); }
     </style>
 </head>
@@ -82,87 +41,79 @@
     <main>
         <div class="card">
             <h2>Select Your Date & Start Time</h2>
-            <p>Packages are $49.99 per couple. All reservations and activity passes are booked around your start time.</p>
+            <p>All reservations and activity passes are curated around your start time.</p>
 
-            <!-- DATE BLOCK 1: FRIDAY, AUG 7 -->
-            <div class="date-group">
-                <div class="date-title">Friday, August 7</div>
-                <div class="date-subtitle">Annapolis Harbor & Historic District Package</div>
-                
-                <div class="time-slots-grid">
-                    <div class="time-slot soldout">
-                        <div class="time-text">5:00 PM</div>
-                        <div class="soldout-badge">Sold Out</div>
-                    </div>
-                    <div class="time-slot soldout">
-                        <div class="time-text">6:30 PM</div>
-                        <div class="soldout-badge">Sold Out</div>
-                    </div>
-                    <div class="time-slot soldout">
-                        <div class="time-text">7:45 PM</div>
-                        <div class="soldout-badge">Sold Out</div>
-                    </div>
-                </div>
-            </div>
+            <div id="loadingText" style="text-align: center; padding: 20px; color: var(--text-muted); font-size: 14px;">Loading live availability...</div>
+            <div id="datesContainer"></div>
 
-            <!-- DATE BLOCK 2: SATURDAY, AUG 8 (LIMITED) -->
-            <div class="date-group" style="border-color: var(--accent);">
-                <div class="date-title" style="color: var(--accent);">Saturday, August 8 🔥</div>
-                <div class="date-subtitle">Limited Experience Slots Remaining</div>
-                
-                <div class="time-slots-grid">
-                    <div class="time-slot soldout">
-                        <div class="time-text">5:00 PM</div>
-                        <div class="soldout-badge">Sold Out</div>
-                    </div>
-                    <div class="time-slot available" onclick="bookTimeSlot('Saturday, Aug 8 @ 6:15 PM')">
-                        <div class="time-text">6:15 PM</div>
-                        <div class="time-sub">2 Slots Left</div>
-                    </div>
-                    <div class="time-slot soldout">
-                        <div class="time-text">7:30 PM</div>
-                        <div class="soldout-badge">Sold Out</div>
-                    </div>
-                    <div class="time-slot available" onclick="bookTimeSlot('Saturday, Aug 8 @ 8:15 PM')">
-                        <div class="time-text">8:15 PM</div>
-                        <div class="time-sub">1 Slot Left</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- DATE BLOCK 3: FRIDAY, AUG 14 -->
-            <div class="date-group">
-                <div class="date-title">Friday, August 14</div>
-                <div class="date-subtitle">Annapolis Harbor & Historic District Package</div>
-                
-                <div class="time-slots-grid">
-                    <div class="time-slot available" onclick="bookTimeSlot('Friday, Aug 14 @ 5:30 PM')">
-                        <div class="time-text">5:30 PM</div>
-                        <div class="time-sub">Available</div>
-                    </div>
-                    <div class="time-slot soldout">
-                        <div class="time-text">6:45 PM</div>
-                        <div class="soldout-badge">Sold Out</div>
-                    </div>
-                    <div class="time-slot available" onclick="bookTimeSlot('Friday, Aug 14 @ 7:30 PM')">
-                        <div class="time-text">7:30 PM</div>
-                        <div class="time-sub">Available</div>
-                    </div>
-                </div>
-            </div>
-
-            <a href="index.html" style="display: block; text-align: center; margin-top: 16px; color: var(--text-muted); font-size: 13px; text-decoration: none;">← Back to Overview</a>
+            <a href="index.html" style="display: block; text-align: center; margin-top: 24px; color: var(--text-muted); font-size: 13px; text-decoration: none;">← Back to Overview</a>
         </div>
     </main>
 
     <footer>&copy; 2026 NightOut Annapolis. Made by locals.</footer>
 
     <script>
-        const STRIPE_LINK = "https://buy.stripe.com/test_6oU8wP7Hr5ese13cwVbII00";
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzK5qTseJuvbgz7uOT056mxcE2o-JESYaNkLnEhcASWbCfFkzxJ-SFBcqgxnPk8jW7-/exec";
 
-        function bookTimeSlot(selectedTimeSlot) {
-            localStorage.setItem('chosenDate', selectedTimeSlot);
-            window.location.href = STRIPE_LINK;
+        window.addEventListener('DOMContentLoaded', () => {
+            fetch(GOOGLE_SCRIPT_URL + "?action=getDates")
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('loadingText').style.display = 'none';
+                const container = document.getElementById('datesContainer');
+                container.innerHTML = "";
+
+                if (!data || data.length === 0) {
+                    container.innerHTML = "<div style='text-align:center; color:#64748b;'>No available dates listed right now. Check back soon!</div>";
+                    return;
+                }
+
+                // Group slots by Date
+                const grouped = {};
+                data.forEach(item => {
+                    if (!grouped[item.date]) grouped[item.date] = [];
+                    grouped[item.date].push(item);
+                });
+
+                Object.keys(grouped).forEach(dateStr => {
+                    const groupDiv = document.createElement('div');
+                    groupDiv.className = "date-group";
+                    
+                    let slotsHtml = `<div class="date-title">${dateStr}</div><div class="time-slots-grid">`;
+                    
+                    grouped[dateStr].forEach(item => {
+                        const isAvailable = item.quantity > 0;
+                        if (isAvailable) {
+                            slotsHtml += `
+                                <div class="time-slot available" onclick="bookTimeSlot('${item.slotKey}', '${item.stripeLink}')">
+                                    <div class="time-text">${item.startTime} - ${item.finishTime}</div>
+                                    <div class="time-sub">${item.quantity} ${item.quantity === 1 ? 'Slot' : 'Slots'} Left ($${item.price})</div>
+                                </div>
+                            `;
+                        } else {
+                            slotsHtml += `
+                                <div class="time-slot soldout">
+                                    <div class="time-text">${item.startTime} - ${item.finishTime}</div>
+                                    <div class="soldout-badge">Sold Out</div>
+                                </div>
+                            `;
+                        }
+                    });
+
+                    slotsHtml += `</div>`;
+                    groupDiv.innerHTML = slotsHtml;
+                    container.appendChild(groupDiv);
+                });
+            })
+            .catch(err => {
+                console.error(err);
+                document.getElementById('loadingText').textContent = "Unable to load dates. Please refresh.";
+            });
+        });
+
+        function bookTimeSlot(slotKey, stripeUrl) {
+            localStorage.setItem('chosenDate', slotKey);
+            window.location.href = stripeUrl;
         }
     </script>
 </body>
